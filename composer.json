@@ -1,0 +1,24 @@
+{
+    "name": "luecano/numero-a-letras",
+    "type": "library",
+    "description": "Convierte un número a letras con formato de moneda para facturación electrónica.",
+    "keywords": ["convertir","numero","letras","facturacion","sunat"],
+    "homepage": "https://github.com/luecano/numero-a-letras",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luis Cano",
+            "email": "luecano@gmail.com",
+            "homepage": "https://github.com/luecano",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "^5.5 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "NumeroALetras\\": "src/"
+        }
+    }
+}
