@@ -1,5 +1,8 @@
 ## Número en Letras
 
+[![GitHub issues](https://img.shields.io/github/issues/luecano/numero-a-letras.svg)](https://github.com/luecano/numero-a-letras/issues)
+[![GitHub stars](https://img.shields.io/github/stars/luecano/numero-a-letras.svg)](https://github.com/luecano/numero-a-letras/stargazers)
+
 ## Descripción
 Convierte un número a letras con formato de moneda para facturación electrónica.
 
