@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
 
 ## Descripción
-Convierte un número a letras con formato de moneda para facturación electrónica.
+Convierte un número a letras con formato de moneda para facturación electrónica SUNAT.
 
 ## Instalación
 Puedes instalar este paquete mediante composer:
