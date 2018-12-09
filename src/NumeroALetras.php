@@ -52,7 +52,7 @@ class NumeroALetras
         'NOVECIENTOS '
     ];
 
-    public static function convertir($number, $currency = '')
+    public static function convertir(float $number, string $currency = '')
     {
         $base_number = round($number, 2);
         $converted = '';
@@ -68,7 +68,7 @@ class NumeroALetras
             $base_number = $div_decimales[0];
             $decNumberStr = (string)$div_decimales[1];
             if (strlen($decNumberStr) == 1) {
-                $decNumberStr = $decNumberStr . '0';
+                $decNumberStr .= '0';
             }
             if (strlen($decNumberStr) == 2) {
                 $decNumberStrFill = str_pad($decNumberStr, 9, '0', STR_PAD_LEFT);
@@ -81,7 +81,11 @@ class NumeroALetras
         $numberStrFill = str_pad($numberStr, 9, '0', STR_PAD_LEFT);
         $millones = substr($numberStrFill, 0, 3);
         $miles = substr($numberStrFill, 3, 3);
-        $cientos = substr($numberStrFill, 6);
+        $cientos = substr($numberStrFill, 6);        
+
+        if ($div_decimales[0] == 0) {
+            $converted .= 'CERO';
+        }
 
         if (intval($millones) > 0) {
             if ($millones == '001') {
@@ -106,7 +110,7 @@ class NumeroALetras
                 $converted .= sprintf('%s ', self::convertirGrupo($cientos));
             }
         }
-
+        
         if (empty($decimales)) {
             $valor_convertido = trim($converted) . ' CON ' . '00/100 ' . mb_strtoupper($currency);
         } else {
