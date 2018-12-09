@@ -20,6 +20,9 @@ Debes agregar `use NumeroALetras\NumeroALetras;` en tu archivo PHP.
 
 Usar la función `NumeroALetras::convertir($numero, $moneda)` para convertir el número a letras.
 
+La variable $numero debe ser de tipo integer (ej: 100) o decimal (ej: 100.10). La función convertir redondea a 2 decimales por defecto.
+La variable $moneda debe ser de tipo string.
+
 ### PHP
 
 ```php
@@ -29,8 +32,10 @@ require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Compos
 
 use NumeroALetras\NumeroALetras;
 
-echo NumeroALetras::convertir(1230.99, 'soles');
-echo NumeroALetras::convertir(1230, 'dólares');
+echo NumeroALetras::convertir(99.99,'soles');
+// echo NumeroALetras::convertir(100.111,'soles'); 
+// echo NumeroALetras::convertir(1230.02,'soles');
+// echo NumeroALetras::convertir(38230.44,'dólares'); 
 ```
 
 ### Laravel
@@ -48,14 +53,18 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return NumeroALetras::convertir(1230.99,'soles');    
-        // return NumeroALetras::convertir(1230,'dólares');
+        return NumeroALetras::convertir(99.99,'soles');  
+        // return NumeroALetras::convertir(100.111,'soles');  
+        // return NumeroALetras::convertir(1230.02,'soles');
+        // return NumeroALetras::convertir(38230.44,'dólares');
     }
 }
 ```
 ### Resultado
 
 ```html
-MIL DOSCIENTOS TREINTA CON 99/100 SOLES
-MIL DOSCIENTOS TREINTA CON 00/100 DÓLARES
+NOVENTA Y NUEVE CON 99/100 SOLES
+CIEN CON 11/100 SOLES
+MIL DOSCIENTOS TREINTA CON 02/100 SOLES
+TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
 ```
