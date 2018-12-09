@@ -32,10 +32,11 @@ require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Compos
 
 use NumeroALetras\NumeroALetras;
 
-echo NumeroALetras::convertir(99.99,'soles');
-// echo NumeroALetras::convertir(100.111,'soles'); 
-// echo NumeroALetras::convertir(1230.02,'soles');
-// echo NumeroALetras::convertir(38230.44,'dólares'); 
+echo NumeroALetras::convertir(99.99, 'soles');
+// echo NumeroALetras::convertir(90, 'soles');
+// echo NumeroALetras::convertir(100.111, 'soles'); 
+// echo NumeroALetras::convertir(1230.02, 'soles');
+// echo NumeroALetras::convertir(38230.44, 'dólares'); 
 ```
 
 ### Laravel
@@ -53,10 +54,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return NumeroALetras::convertir(99.99,'soles');  
-        // return NumeroALetras::convertir(100.111,'soles');  
-        // return NumeroALetras::convertir(1230.02,'soles');
-        // return NumeroALetras::convertir(38230.44,'dólares');
+        return NumeroALetras::convertir(99.99, 'soles');  
+        // return NumeroALetras::convertir(90, 'soles');
+        // return NumeroALetras::convertir(100.111, 'soles');  
+        // return NumeroALetras::convertir(1230.02, 'soles');
+        // return NumeroALetras::convertir(38230.44, 'dólares');
     }
 }
 ```
@@ -64,6 +66,7 @@ class HomeController extends Controller
 
 ```html
 NOVENTA Y NUEVE CON 99/100 SOLES
+NOVENTA CON 00/100 SOLES
 CIEN CON 11/100 SOLES
 MIL DOSCIENTOS TREINTA CON 02/100 SOLES
 TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
