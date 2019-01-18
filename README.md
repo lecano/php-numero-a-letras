@@ -20,9 +20,9 @@ Debes agregar `use NumeroALetras\NumeroALetras;` en tu archivo PHP.
 
 Usar la función `NumeroALetras::convertir($numero, $moneda)` para convertir el número a letras.
 
-El primer parámetro recibe un elemento numérico con punto decimal + hasta dos decimales.
+* El primer parámetro recibe un elemento numérico con punto decimal + hasta dos decimales.
 
-El segundo parámetro recibe un elemento en formato texto.
+* El segundo parámetro recibe una cadena de texto.
 
 ### PHP
 
