@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
 
 ## Descripción
-Convierte un número a letras con formato de moneda para facturación electrónica SUNAT.
+Convierte un número a letras con formato de moneda para facturación electrónica SUNAT. También funciona para otros países y monedas.
 
 ## Instalación
 Puedes instalar este paquete mediante composer:
@@ -22,7 +22,7 @@ Usar la función `NumeroALetras::convertir($numero, $moneda)` para convertir el 
 
 * El primer parámetro recibe un elemento numérico con punto decimal + hasta dos decimales.
 
-* El segundo parámetro recibe una cadena de texto.
+* El segundo parámetro recibe una cadena de texto con el nombre de la moneda.
 
 ### PHP
 
@@ -34,10 +34,10 @@ require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Compos
 use NumeroALetras\NumeroALetras;
 
 echo NumeroALetras::convertir(99.99, 'soles');
-echo NumeroALetras::convertir('99.99', 'soles');
+echo NumeroALetras::convertir('99.99', 'pesos');
 echo NumeroALetras::convertir(90, 'soles');
 echo NumeroALetras::convertir(100.111, 'soles'); 
-echo NumeroALetras::convertir(1230.02, 'soles');
+echo NumeroALetras::convertir(1230.02, 'euros');
 echo NumeroALetras::convertir(38230.44, 'dólares'); 
 ```
 
@@ -45,10 +45,10 @@ echo NumeroALetras::convertir(38230.44, 'dólares');
 
 ```html
 NOVENTA Y NUEVE CON 99/100 SOLES
-NOVENTA Y NUEVE CON 99/100 SOLES
+NOVENTA Y NUEVE CON 99/100 PESOS
 NOVENTA CON 00/100 SOLES
 CIEN CON 11/100 SOLES
-MIL DOSCIENTOS TREINTA CON 02/100 SOLES
+MIL DOSCIENTOS TREINTA CON 02/100 EUROS
 TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
 ```
 
