@@ -72,3 +72,4 @@ class HomeController extends Controller
         return NumeroALetras::convertir(99.99, 'soles');  
     }
 }
+```
