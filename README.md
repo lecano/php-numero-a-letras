@@ -6,24 +6,27 @@
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
 
 ## Descripción
-Convierte un número a letras con formato de moneda para facturación electrónica SUNAT. También funciona para otros países y monedas.
+Librería PHP para convertir un número a su representación en letras requerido para la facturación electrónica. Funciona para varios países y monedas.
 
 ## Instalación
-Puedes instalar este paquete mediante composer:
+Instalar este paquete mediante composer:
 
 ```bash
 composer require luecano/numero-a-letras
 ```
 
 ## Uso
-Debes agregar `use NumeroALetras\NumeroALetras;` en tu archivo PHP.
+Agregar la referencia a la libreria `use NumeroALetras\NumeroALetras;` en nuestro archivo PHP.
 
-Usar la función `NumeroALetras::convertir($numero, $moneda)` para convertir el número a letras.
+Usar la función `NumeroALetras::convertir($numero, $moneda)` para convertir el número a letras donde:
 
-* El primer parámetro recibe un elemento numérico con punto decimal + hasta dos decimales.
+* El primer parámetro recibe un elemento numérico o cadena de texto representando un valor numérico, el valor se redondea a precisión de hasta dos decimales.
 
-* El segundo parámetro recibe una cadena de texto con el nombre de la moneda.
+* El segundo parámetro recibe una cadena de texto con el nombre o definición de la moneda.
 
+* El resultado se mostrará en mayúsculas por defecto.
+
+## Ejemplos de uso
 ### PHP
 
 ```php
@@ -35,21 +38,8 @@ use NumeroALetras\NumeroALetras;
 
 echo NumeroALetras::convertir(99.99, 'soles');
 echo NumeroALetras::convertir('99.99', 'pesos');
-echo NumeroALetras::convertir(90, 'soles');
-echo NumeroALetras::convertir(100.111, 'soles'); 
 echo NumeroALetras::convertir(1230.02, 'euros');
 echo NumeroALetras::convertir(38230.44, 'dólares'); 
-```
-
-### Resultado
-
-```html
-NOVENTA Y NUEVE CON 99/100 SOLES
-NOVENTA Y NUEVE CON 99/100 PESOS
-NOVENTA CON 00/100 SOLES
-CIEN CON 11/100 SOLES
-MIL DOSCIENTOS TREINTA CON 02/100 EUROS
-TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
 ```
 
 ### Laravel
@@ -68,8 +58,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //Llamar función NumeroALetras
         return NumeroALetras::convertir(99.99, 'soles');  
+        // return NumeroALetras::convertir('99.99', 'pesos');
+        // return NumeroALetras::convertir(1230.02, 'euros');
+        // return NumeroALetras::convertir(38230.44, 'dólares'); 
     }
 }
+```
+
+### Resultado
+
+```html
+NOVENTA Y NUEVE CON 99/100 SOLES
+NOVENTA Y NUEVE CON 99/100 PESOS
+MIL DOSCIENTOS TREINTA CON 02/100 EUROS
+TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
 ```
