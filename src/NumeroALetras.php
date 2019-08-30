@@ -4,6 +4,9 @@ namespace NumeroALetras;
 
 class NumeroALetras
 {
+    /**
+     * @var array
+     */
     private static $UNIDADES = [
         '',
         'UN ',
@@ -28,6 +31,9 @@ class NumeroALetras
         'VEINTE '
     ];
 
+    /**
+     * @var array
+     */
     private static $DECENAS = [
         'VEINTI',
         'TREINTA ',
@@ -40,6 +46,9 @@ class NumeroALetras
         'CIEN '
     ];
 
+    /**
+     * @var array
+     */
     private static $CENTENAS = [
         'CIENTO ',
         'DOSCIENTOS ',
@@ -52,7 +61,13 @@ class NumeroALetras
         'NOVECIENTOS '
     ];
 
-    public static function convertir(float $number, string $currency = '')
+    /**
+     * @param float $number
+     * @param string $currency
+     * @param bool $upper
+     * @return string
+     */
+    public static function convertir(float $number, string $currency = '', $upper = true)
     {
         $base_number = round($number, 2);
         $converted = '';
@@ -117,9 +132,18 @@ class NumeroALetras
             $valor_convertido = trim($converted) . ' CON ' . $decNumberStr . '/100 ' . mb_strtoupper($currency);
         }
 
-        return trim($valor_convertido);
+        $text = trim($valor_convertido);
+
+        if(!$upper){
+            return strtolower($text);
+        }
+        return $text;
     }
 
+    /**
+     * @param $n
+     * @return mixed|string
+     */
     private static function convertirGrupo($n)
     {
         $output = '';
