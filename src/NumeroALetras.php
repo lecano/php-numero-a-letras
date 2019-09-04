@@ -67,7 +67,7 @@ class NumeroALetras
      * @param bool $upper
      * @return string
      */
-    public static function convertir(float $number, string $currency = '', $upper = true)
+    public static function convertir($number, $currency = '', $upper = true)
     {
         $base_number = round($number, 2);
         $converted = '';
@@ -81,7 +81,7 @@ class NumeroALetras
 
         if (count($div_decimales) > 1) {
             $base_number = $div_decimales[0];
-            $decNumberStr = (string)$div_decimales[1];
+            $decNumberStr = (string) $div_decimales[1];
             if (strlen($decNumberStr) == 1) {
                 $decNumberStr .= '0';
             }
@@ -92,11 +92,11 @@ class NumeroALetras
             }
         }
 
-        $numberStr = (string)$base_number;
+        $numberStr = (string) $base_number;
         $numberStrFill = str_pad($numberStr, 9, '0', STR_PAD_LEFT);
         $millones = substr($numberStrFill, 0, 3);
         $miles = substr($numberStrFill, 3, 3);
-        $cientos = substr($numberStrFill, 6);        
+        $cientos = substr($numberStrFill, 6);
 
         if ($div_decimales[0] == 0) {
             $converted .= 'CERO';
@@ -125,19 +125,19 @@ class NumeroALetras
                 $converted .= sprintf('%s ', self::convertirGrupo($cientos));
             }
         }
-        
+
         if (empty($decimales)) {
             $valor_convertido = trim($converted) . ' CON ' . '00/100 ' . mb_strtoupper($currency);
         } else {
             $valor_convertido = trim($converted) . ' CON ' . $decNumberStr . '/100 ' . mb_strtoupper($currency);
         }
 
-        $text = trim($valor_convertido);
+        $output = trim($valor_convertido);
 
-        if(!$upper){
-            return strtolower($text);
+        if (!$upper) {
+            return strtolower($output);
         }
-        return $text;
+        return $output;
     }
 
     /**
