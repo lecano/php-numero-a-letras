@@ -45,8 +45,8 @@ use NumeroALetras\NumeroALetras;
 
 echo NumeroALetras::convertir(99.99, 'soles');
 echo NumeroALetras::convertir(99.99, 'soles', false);
-echo NumeroALetras::convertir(100, pesos);
-echo NumeroALetras::convertir(100, false);
+echo NumeroALetras::convertir(100, 'pesos');
+echo NumeroALetras::convertir(100);
 echo NumeroALetras::convertir(1230.02, 'euros');
 echo NumeroALetras::convertir(38230.44, 'dólares');
 ```
@@ -68,7 +68,7 @@ class HomeController extends Controller
     {
         return NumeroALetras::convertir(99.99, 'soles');
         // return NumeroALetras::convertir(99.99, 'soles', false);
-        // return NumeroALetras::convertir(100, pesos);
+        // return NumeroALetras::convertir(100, 'pesos');
         // return NumeroALetras::convertir(100);
         // return NumeroALetras::convertir(1230.02, 'euros');
         // return NumeroALetras::convertir(38230.44, 'dólares');
