@@ -8,7 +8,7 @@
 
 ## Descripción
 
-Librería PHP para convertir un número a su representación en letras para facturación electrónica. Funciona para varios países y monedas.
+Librería PHP permite convertir un número a letras para facturación electrónica. Funciona para varios países y monedas.
 
 ## Instalación
 
