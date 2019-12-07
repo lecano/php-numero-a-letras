@@ -43,26 +43,26 @@ Los parámetros que recibe la función son:
 $numeroALetras = NumeroALetras::convert(99.99, 'soles');
 echo $numeroALetras;
 
-NOVENTA Y NUEVE CON 99/100 SOLES
+//NOVENTA Y NUEVE CON 99/100 SOLES
 ```
 
 ```php
 $numeroALetras = NumeroALetras::convert(99.99, 'soles', false);
 echo $numeroALetras;
 
-noventa y nueve con 99/100 soles
+//noventa y nueve con 99/100 soles
 ```
 
 ```php
 $numeroALetras = NumeroALetras::convert(100, 'pesos');
 echo $numeroALetras;
 
-CIEN CON 00/100 PESOS
+//CIEN CON 00/100 PESOS
 ```
 
 ```php
 $numeroALetras = NumeroALetras::convert(38230.44, 'dólares');
 echo $numeroALetras;
 
-TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
+//TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
 ```
