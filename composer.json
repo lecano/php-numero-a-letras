@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Luecano\\NumeroALetras\\": "src"
+      "Luecano\\NumeroALetras\\": "src/"
     }
   }
 }
