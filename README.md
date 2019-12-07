@@ -42,35 +42,27 @@ Los parámetros que recibe la función son:
 ```php
 $numeroALetras = NumeroALetras::convert(99.99, 'soles');
 echo $numeroALetras;
-```
 
-```bash
 NOVENTA Y NUEVE CON 99/100 SOLES
 ```
 
 ```php
 $numeroALetras = NumeroALetras::convert(99.99, 'soles', false);
 echo $numeroALetras;
-```
 
-```bash
 noventa y nueve con 99/100 soles
 ```
 
 ```php
 $numeroALetras = NumeroALetras::convert(100, 'pesos');
 echo $numeroALetras;
-```
 
-```bash
 CIEN CON 00/100 PESOS
 ```
 
 ```php
 $numeroALetras = NumeroALetras::convert(38230.44, 'dólares');
 echo $numeroALetras;
-```
 
-```bash
 TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
 ```
