@@ -1,6 +1,6 @@
 <?php
 
-namespace Luecano;
+namespace Luecano\NumeroALetras;
 
 class NumeroALetras
 {
