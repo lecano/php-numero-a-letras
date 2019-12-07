@@ -23,7 +23,7 @@ composer require luecano/numero-a-letras
 ```php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Luecano\NumeroALetras;
+use Luecano\NumeroALetras\NumeroALetras;
 
 $numeroALetras = NumeroALetras::convert($number, $currency, $upper);
 echo $numeroALetras;
