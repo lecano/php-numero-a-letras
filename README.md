@@ -1,18 +1,18 @@
 ## Número a Letras
 
-[![Latest Stable Version](https://poser.pugx.org/luecano/numero-a-letras/v/stable)](https://packagist.org/packages/luecano/numero-a-letras)
-[![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads)](https://packagist.org/packages/luecano/numero-a-letras)
-[![GitHub issues](https://img.shields.io/github/issues/luecano/numero-a-letras.svg)](https://github.com/luecano/numero-a-letras/issues)
-[![GitHub stars](https://img.shields.io/github/stars/luecano/numero-a-letras.svg)](https://github.com/luecano/numero-a-letras/stargazers)
-[![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
+[![Latest Stable Version](https://poser.pugx.org/luecano/numero-a-letras/v/stable?format=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
+[![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads?format=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
+[![GitHub issues](https://img.shields.io/github/issues/luecano/numero-a-letras.svg?style=flat-square)](https://github.com/luecano/numero-a-letras/issues)
+[![GitHub stars](https://img.shields.io/github/stars/luecano/numero-a-letras.svg?style=flat-square)](https://github.com/luecano/numero-a-letras/stargazers)
+[![License](https://poser.pugx.org/luecano/numero-a-letras/license?format=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
 
-## Descripción
+Librería PHP para convertir un número a letras. Ideal para facturacion electrónica.
 
-Librería PHP permite convertir un número a letras para facturación electrónica. Funciona para varios países y monedas.
+Funciona para varios países y monedas.
 
-## Instalación
+## Instalar
 
-Instalar paquete usando Composer:
+Puedes instalar este paquete mediante Composer
 
 ```bash
 composer require luecano/numero-a-letras
@@ -20,69 +20,57 @@ composer require luecano/numero-a-letras
 
 ## Uso
 
-Agregar la referencia `use NumeroALetras\NumeroALetras;` en nuestro archivo PHP.
+```php
+require_once __DIR__ . '/../vendor/autoload.php';
 
-Usar la función `NumeroALetras::convertir($number, $currency, $upper)` para convertir un número a letras.
+use Luecano\NumeroALetras;
+
+$numeroALetras = NumeroALetras::convert($number, $currency, $upper);
+echo $numeroALetras;
+```
 
 Los parámetros que recibe la función son:
 
-- `$number` (requerido) recibe un valor numérico, el valor se redondea a dos decimales por defecto.
+- `$number` (requerido) recibe `float`, el valor se redondea a dos decimales por defecto.
 
-- `$currency` (opcional) recibe una cadena de texto con el nombre o definición de la moneda. Valor por defecto es `''` o cadena vacia.
+- `$currency` (opcional) recibe `string` con el nombre o definición de la moneda. Valor por defecto es `''` o cadena vacia.
 
-- `$upper` (opcional) recibe un boleano para indicar si el resultado debe mostrarse en mayúculas o minúsculas. Valor por defecto es `true`.
+- `$upper` (opcional) recibe `boolean` para indicar si el resultado debe mostrarse en mayúculas o minúsculas. Valor por defecto es `true`.
 
-## Ejemplos de uso
-
-### Ejemplo usando solo PHP
+## Ejemplos
 
 ```php
-<?php
-
-require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
-
-use NumeroALetras\NumeroALetras;
-
-echo NumeroALetras::convertir(99.99, 'soles');
-echo NumeroALetras::convertir(99.99, 'soles', false);
-echo NumeroALetras::convertir(100, 'pesos');
-echo NumeroALetras::convertir(100);
-echo NumeroALetras::convertir(1230.02, 'euros');
-echo NumeroALetras::convertir(38230.44, 'dólares');
+$numeroALetras = NumeroALetras::convert(99.99, 'soles');
+echo $numeroALetras;
 ```
 
-### Ejemplo usando Laravel
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-use NumeroALetras\NumeroALetras;
-
-class HomeController extends Controller
-{
-    public function index()
-    {
-        return NumeroALetras::convertir(99.99, 'soles');
-        // return NumeroALetras::convertir(99.99, 'soles', false);
-        // return NumeroALetras::convertir(100, 'pesos');
-        // return NumeroALetras::convertir(100);
-        // return NumeroALetras::convertir(1230.02, 'euros');
-        // return NumeroALetras::convertir(38230.44, 'dólares');
-    }
-}
-```
-
-### Resultados
-
-```html
+```bash
 NOVENTA Y NUEVE CON 99/100 SOLES
+```
+
+```php
+$numeroALetras = NumeroALetras::convert(99.99, 'soles', false);
+echo $numeroALetras;
+```
+
+```bash
 noventa y nueve con 99/100 soles
+```
+
+```php
+$numeroALetras = NumeroALetras::convert(100, 'pesos');
+echo $numeroALetras;
+```
+
+```bash
 CIEN CON 00/100 PESOS
-CIEN CON 00/100
-MIL DOSCIENTOS TREINTA CON 02/100 EUROS
+```
+
+```php
+$numeroALetras = NumeroALetras::convert(38230.44, 'dólares');
+echo $numeroALetras;
+```
+
+```bash
 TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
 ```

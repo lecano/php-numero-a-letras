@@ -1,13 +1,13 @@
 <?php
 
-namespace NumeroALetras;
+namespace Luecano;
 
 class NumeroALetras
 {
     /**
      * @var array
      */
-    private static $UNIDADES = [
+    private static $UNITS = [
         '',
         'UN ',
         'DOS ',
@@ -34,7 +34,7 @@ class NumeroALetras
     /**
      * @var array
      */
-    private static $DECENAS = [
+    private static $TENS = [
         'VEINTI',
         'TREINTA ',
         'CUARENTA ',
@@ -49,7 +49,7 @@ class NumeroALetras
     /**
      * @var array
      */
-    private static $CENTENAS = [
+    private static $HUNDREDS = [
         'CIENTO ',
         'DOSCIENTOS ',
         'TRESCIENTOS ',
@@ -67,76 +67,76 @@ class NumeroALetras
      * @param bool $upper
      * @return string
      */
-    public static function convertir($number, $currency = '', $upper = true)
+    public static function convert($number, $currency = '', $upper = true)
     {
-        $base_number = round($number, 2);
-        $converted = '';
-        $decimales = '';
+        $baseNumber = round($number, 2);
+        $output = '';
 
-        if (($base_number < 0) || ($base_number > 999999999)) {
+        if (($baseNumber < 0) || ($baseNumber > 999999999)) {
             return 'No es posible convertir el número en letras';
         }
 
-        $div_decimales = explode('.', $base_number);
+        $divDecimals = explode('.', $baseNumber);
 
-        if (count($div_decimales) > 1) {
-            $base_number = $div_decimales[0];
-            $decNumberStr = (string) $div_decimales[1];
+        if (count($divDecimals) > 1) {
+            $baseNumber = $divDecimals[0];
+            $decNumberStr = (string) $divDecimals[1];
             if (strlen($decNumberStr) == 1) {
                 $decNumberStr .= '0';
             }
             if (strlen($decNumberStr) == 2) {
                 $decNumberStrFill = str_pad($decNumberStr, 9, '0', STR_PAD_LEFT);
-                $decCientos = substr($decNumberStrFill, 6);
-                $decimales = self::convertirGrupo($decCientos);
+                $decHundreds = substr($decNumberStrFill, 6);
+                $decimals = self::convertGroup($decHundreds);
             }
         }
 
-        $numberStr = (string) $base_number;
+        $numberStr = (string) $baseNumber;
         $numberStrFill = str_pad($numberStr, 9, '0', STR_PAD_LEFT);
-        $millones = substr($numberStrFill, 0, 3);
-        $miles = substr($numberStrFill, 3, 3);
-        $cientos = substr($numberStrFill, 6);
+        $millions = substr($numberStrFill, 0, 3);
+        $thousands = substr($numberStrFill, 3, 3);
+        $hundreds = substr($numberStrFill, 6);
 
-        if ($div_decimales[0] == 0) {
-            $converted .= 'CERO';
+        if ($divDecimals[0] == 0) {
+            $output .= 'CERO';
         }
 
-        if (intval($millones) > 0) {
-            if ($millones == '001') {
-                $converted .= 'UN MILLON ';
-            } else if (intval($millones) > 0) {
-                $converted .= sprintf('%sMILLONES ', self::convertirGrupo($millones));
+        if (intval($millions) > 0) {
+            if ($millions == '001') {
+                $output .= 'UN MILLON ';
+            } else if (intval($millions) > 0) {
+                $output .= sprintf('%sMILLONES ', self::convertGroup($millions));
             }
         }
 
-        if (intval($miles) > 0) {
-            if ($miles == '001') {
-                $converted .= 'MIL ';
-            } else if (intval($miles) > 0) {
-                $converted .= sprintf('%sMIL ', self::convertirGrupo($miles));
+        if (intval($thousands) > 0) {
+            if ($thousands == '001') {
+                $output .= 'MIL ';
+            } else if (intval($thousands) > 0) {
+                $output .= sprintf('%sMIL ', self::convertGroup($thousands));
             }
         }
 
-        if (intval($cientos) > 0) {
-            if ($cientos == '001') {
-                $converted .= '';
-            } else if (intval($cientos) > 0) {
-                $converted .= sprintf('%s ', self::convertirGrupo($cientos));
+        if (intval($hundreds) > 0) {
+            if ($hundreds == '001') {
+                $output .= '';
+            } else if (intval($hundreds) > 0) {
+                $output .= sprintf('%s ', self::convertGroup($hundreds));
             }
         }
 
-        if (empty($decimales)) {
-            $valor_convertido = trim($converted) . ' CON ' . '00/100 ' . mb_strtoupper($currency);
+        if (empty($decimals)) {
+            $convertedValue = trim($output) . ' CON ' . '00/100 ' . mb_strtoupper($currency);
         } else {
-            $valor_convertido = trim($converted) . ' CON ' . $decNumberStr . '/100 ' . mb_strtoupper($currency);
+            $convertedValue = trim($output) . ' CON ' . $decNumberStr . '/100 ' . mb_strtoupper($currency);
         }
 
-        $output = trim($valor_convertido);
+        $output = trim($convertedValue);
 
         if (!$upper) {
             return strtolower($output);
         }
+
         return $output;
     }
 
@@ -144,25 +144,25 @@ class NumeroALetras
      * @param $n
      * @return mixed|string
      */
-    private static function convertirGrupo($n)
+    private static function convertGroup($n)
     {
         $output = '';
 
         if ($n == '100') {
             $output = "CIEN ";
         } else if ($n[0] !== '0') {
-            $output = self::$CENTENAS[$n[0] - 1];
+            $output = self::$HUNDREDS[$n[0] - 1];
         }
 
         $k = intval(substr($n, 1));
 
         if ($k <= 20) {
-            $output .= self::$UNIDADES[$k];
+            $output .= self::$UNITS[$k];
         } else {
             if (($k > 30) && ($n[2] !== '0')) {
-                $output .= sprintf('%sY %s', self::$DECENAS[intval($n[1]) - 2], self::$UNIDADES[intval($n[2])]);
+                $output .= sprintf('%sY %s', self::$TENS[intval($n[1]) - 2], self::$UNITS[intval($n[2])]);
             } else {
-                $output .= sprintf('%s%s', self::$DECENAS[intval($n[1]) - 2], self::$UNIDADES[intval($n[2])]);
+                $output .= sprintf('%s%s', self::$TENS[intval($n[1]) - 2], self::$UNITS[intval($n[2])]);
             }
         }
 
