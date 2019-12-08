@@ -1,10 +1,10 @@
 ## Número a Letras
 
-[![Latest Stable Version](https://poser.pugx.org/luecano/numero-a-letras/v/stable?format=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
-[![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads?format=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/luecano/numero-a-letras.svg?style=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
+[![Total Downloads](https://img.shields.io/packagist/dt/luecano/numero-a-letras.svg?style=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
 [![GitHub issues](https://img.shields.io/github/issues/luecano/numero-a-letras.svg?style=flat-square)](https://github.com/luecano/numero-a-letras/issues)
 [![GitHub stars](https://img.shields.io/github/stars/luecano/numero-a-letras.svg?style=flat-square)](https://github.com/luecano/numero-a-letras/stargazers)
-[![License](https://poser.pugx.org/luecano/numero-a-letras/license?format=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
 
 Librería PHP para convertir un número a letras. Ideal para facturacion electrónica.
 
