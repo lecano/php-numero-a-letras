@@ -21,7 +21,6 @@ composer require luecano/numero-a-letras
 ## Uso
 
 ```php
-require_once __DIR__ . '/../vendor/autoload.php';
 
 use Luecano\NumeroALetras\NumeroALetras;
 
