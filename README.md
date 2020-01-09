@@ -12,7 +12,7 @@ Funciona para varios países y monedas.
 
 ## Instalar
 
-Puedes instalar este paquete mediante Composer
+Puede instalar este paquete mediante Composer
 
 ```bash
 composer require luecano/numero-a-letras
@@ -29,9 +29,9 @@ echo $numeroALetras;
 
 Los parámetros que recibe la función son:
 
-- `$number` (requerido) recibe `float`, el valor se redondea a dos decimales por defecto.
+- `$number` (requerido) recibe `float`, el valor se redondea a dos decimales por defecto. Valores aceptados 0 a 999999999.
 
-- `$currency` (opcional) recibe `string` con el nombre o definición de la moneda. Valor por defecto es `''` o cadena vacia.
+- `$currency` (opcional) recibe `string` con el nombre o definición de la moneda, ejemplo: soles, pesos, dólares, euros, etc. Valor por defecto es `''` o cadena vacia.
 
 - `$upper` (opcional) recibe `boolean` para indicar si el resultado debe mostrarse en mayúculas o minúsculas. Valor por defecto es `true`.
 
