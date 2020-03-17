@@ -21,6 +21,8 @@ composer require luecano/numero-a-letras
 ## Uso
 
 ```php
+require 'vendor/autoload.php';
+
 use Luecano\NumeroALetras\NumeroALetras;
 
 $numeroALetras = NumeroALetras::convert($number, $currency, $upper);
