@@ -1,5 +1,7 @@
 ## Número a Letras
 
+[![Build Status](https://travis-ci.org/luecano/numero-a-letras.svg?branch=master)](https://travis-ci.org/luecano/numero-a-letras)
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/luecano/numero-a-letras.svg?style=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
 [![Total Downloads](https://img.shields.io/packagist/dt/luecano/numero-a-letras.svg?style=flat-square)](https://packagist.org/packages/luecano/numero-a-letras)
 [![GitHub issues](https://img.shields.io/github/issues/luecano/numero-a-letras.svg?style=flat-square)](https://github.com/luecano/numero-a-letras/issues)
