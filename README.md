@@ -19,6 +19,11 @@ Puede instalar este paquete mediante Composer
 composer require luecano/numero-a-letras
 ```
 
+Puede actualizar este paquete mediante Composer
+
+```bash
+composer update luecano/numero-a-letras
+```
 ## Uso
 
 ```php
@@ -59,6 +64,13 @@ $numeroALetras = NumeroALetras::convert(100, 'pesos');
 echo $numeroALetras;
 
 //CIEN CON 00/100 PESOS
+```
+
+```php
+$numeroALetras = NumeroALetras::convert(101, 'soles');
+echo $numeroALetras;
+
+//CIENTO UNO CON 00/100 SOLES
 ```
 
 ```php
