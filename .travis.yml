@@ -12,7 +12,7 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - ./vendor/bin/phpunit test
+  - ./vendor/bin/phpunit --coverage-clover=coverage.xml
 
 notifications:
   on_success: never
