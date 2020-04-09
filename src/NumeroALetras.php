@@ -9,7 +9,7 @@ class NumeroALetras
      */
     private static $UNITS = [
         '',
-        'UN ',
+        'UNO ',
         'DOS ',
         'TRES ',
         'CUATRO ',
@@ -119,7 +119,7 @@ class NumeroALetras
 
         if (intval($hundreds) > 0) {
             if ($hundreds == '001') {
-                $output .= '';
+                $output .= 'UNO';
             } else if (intval($hundreds) > 0) {
                 $output .= sprintf('%s ', self::convertGroup($hundreds));
             }
