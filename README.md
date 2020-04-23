@@ -51,7 +51,7 @@ Parámetros:
 
 - `$cents` (opcional) Establece el nombre o código para la parte decimal, valor por defecto es ''.
 
-Para convertir un número a letras en formato de factura electrónica.
+Para convertir un número a letras en formato de facturación electrónica SUNAT.
 
 ```php
 use Luecano\NumeroALetras\NumeroALetras;
@@ -68,27 +68,77 @@ Parámetros:
 
 - `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es ''.
 
+### Apócope de uno
+
+Para cambiar la palabra 'UNO' por 'UN' hacer lo siguiente:
+
+```php
+use Luecano\NumeroALetras\NumeroALetras;
+
+$formatter = new NumeroALetras;
+$formatter->apocope = true;
+echo $formatter->toWords($number);
+```
+
+### Conector
+
+Para cambiar la palabra 'CON' por otra de su preferencia hacer lo siguiente:
+
+```php
+use Luecano\NumeroALetras\NumeroALetras;
+
+$formatter = new NumeroALetras;
+$formatter->conector = 'Y';
+echo $formatter->toWords($number);
+```
+
 ## Ejemplos
 
 ```php
-$numeroALetras = NumeroALetras::convert(99.99, 'soles');
-echo $numeroALetras;
+use Luecano\NumeroALetras\NumeroALetras;
 
-//NOVENTA Y NUEVE CON 99/100 SOLES
+$formatter = new NumeroALetras;
+echo $formatter->toWords(1100)
+
+//MIL CIEN
 ```
 
 ```php
-$numeroALetras = NumeroALetras::convert(99.99, 'soles', false);
-echo $numeroALetras;
+use Luecano\NumeroALetras\NumeroALetras;
 
-//noventa y nueve con 99/100 soles
+$formatter = new NumeroALetras;
+echo $formatter->toMoney(10.10, 2, 'SOLES', 'CENTIMOS');
+
+//DIEZ SOLES CON DIEZ CENTIMOS
 ```
 
 ```php
-$numeroALetras = NumeroALetras::convert(100, 'pesos');
-echo $numeroALetras;
+use Luecano\NumeroALetras\NumeroALetras;
 
-//CIEN CON 00/100 PESOS
+$formatter = new NumeroALetras;
+echo $formatter->toInvoice(1700.50, 2, 'soles');
+
+//MIL SETECIENTOS CON 50/100 SOLES
+```
+
+```php
+use Luecano\NumeroALetras\NumeroALetras;
+
+$formatter = new NumeroALetras;
+$formatter->apocope = true;
+echo $formatter->toWords(101) . ' AÑOS';
+
+//CIENTO UN AÑOS
+```
+
+```php
+use Luecano\NumeroALetras\NumeroALetras;
+
+$formatter = new NumeroALetras;
+$formatter->conector = 'Y';
+echo $formatter->toMoney(11.10, 2, 'pesos', 'centavos');
+
+//ONCE PESOS Y DIEZ CENTAVOS
 ```
 
 ### Documentación v1.4
