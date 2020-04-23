@@ -38,7 +38,7 @@ Para convertir un número a letras en formato moneda.
 use Luecano\NumeroALetras\NumeroALetras;
 
 $formatter = new NumeroALetras;
-echo $formatter->toMoney($number, $decimals, $currency, $cents)
+echo $formatter->toMoney($number, $decimals, $currency, $cents);
 ```
 
 Parámetros:
@@ -57,7 +57,7 @@ Para convertir un número a letras en formato de facturación electrónica SUNAT
 use Luecano\NumeroALetras\NumeroALetras;
 
 $formatter = new NumeroALetras;
-echo $formatter->toInvoice($number, $decimals, $currency)
+echo $formatter->toInvoice($number, $decimals, $currency);
 ```
 
 Parámetros:
