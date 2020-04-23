@@ -8,33 +8,56 @@ use PHPUnit\Framework\TestCase;
 
 class NumeroALetrasTest extends TestCase
 {
-    public function testConvertToUpper()
+    public function testToWords()
     {
-        $this->assertEquals('NOVENTA Y NUEVE CON 99/100 SOLES', NumeroALetras::convert(99.99, 'soles'));
+        $formatter = new NumeroALetras;
+
+        $this->assertEquals('CIEN', $formatter->toWords(100));
     }
 
-    public function testConvertToLower()
+    public function testToWordsThousands()
     {
-        $this->assertEquals('noventa y nueve con 99/100 pesos', NumeroALetras::convert(99.99, 'pesos', false));
+        $formatter = new NumeroALetras;
+        $this->assertEquals('MIL CIEN', $formatter->toWords(1100));
     }
 
-    public function testConvertUnits()
+    public function testToMoney()
     {
-        $this->assertEquals('uno con 00/100 soles', NumeroALetras::convert(1, 'soles', false));
+        $formatter = new NumeroALetras;
+
+        $this->assertEquals('MIL CIEN SOLES', $formatter->toMoney(1100, 2, 'SOLES', 'CENTIMOS'));
     }
 
-    public function testConvertTens()
+    public function testToMoneyFloat()
     {
-        $this->assertEquals('once con 00/100 pesos', NumeroALetras::convert(11, 'pesos', false));
+        $formatter = new NumeroALetras;
+        $this->assertEquals('DIEZ SOLES CON DIEZ CENTIMOS', $formatter->toMoney(10.10, 2, 'SOLES', 'CENTIMOS'));
     }
 
-    public function testConvertHundreds()
+    public function testToInvoice()
     {
-        $this->assertEquals('CIENTO UNO CON 00/100 SOLES', NumeroALetras::convert(101, 'soles'));
+        $formatter = new NumeroALetras;
+
+        $this->assertEquals('CIEN CON 00/100 SOLES', $formatter->toInvoice(100, 2, 'soles'));
     }
 
-    public function testConvertThousands()
+    public function testToInvoiceFloat()
     {
-        $this->assertEquals('MIL UNO CON 00/100 PESOS', NumeroALetras::convert(1001, 'pesos'));
+        $formatter = new NumeroALetras;
+        $this->assertEquals('MIL SETECIENTOS CON 50/100 SOLES', $formatter->toInvoice(1700.50, 2, 'soles'));
+    }
+
+    public function testApocope()
+    {
+        $formatter = new NumeroALetras;
+        $formatter->apocope = true;
+        $this->assertEquals('CIENTO UN', $formatter->toWords(101));
+    }
+
+    public function testConector()
+    {
+        $formatter = new NumeroALetras;
+        $formatter->conector = 'Y';
+        $this->assertEquals('DIEZ PESOS Y DIEZ CENTAVOS', $formatter->toMoney(10.10, 2, 'pesos', 'centavos'));
     }
 }

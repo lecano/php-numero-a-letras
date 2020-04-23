@@ -5,42 +5,68 @@
 [![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads)](https://packagist.org/packages/luecano/numero-a-letras)
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
 
-Librería PHP para convertir un número a letras. Ideal para facturacion electrónica.
-
-Funciona para varios países y monedas.
+Librería PHP para convertir un número a su valor correspondiente en letras.
 
 ## Instalar
 
-Puede instalar este paquete mediante Composer
+Instalar usando Composer
 
 ```bash
 composer require luecano/numero-a-letras
 ```
 
-Puede actualizar este paquete mediante Composer
-
-```bash
-composer update luecano/numero-a-letras
-```
-
 ## Uso
 
-```php
-require 'vendor/autoload.php';
+Para convertir un número a letras.
 
+```php
 use Luecano\NumeroALetras\NumeroALetras;
 
-$numeroALetras = NumeroALetras::convert($number, $currency, $upper);
-echo $numeroALetras;
+$formatter = new NumeroALetras;
+echo $formatter->toWords($number, $decimals);
 ```
 
-Los parámetros que recibe la función son:
+Parámetros:
 
-- `$number` (requerido) recibe `float`, el valor se redondea a dos decimales por defecto. Valores aceptados 0 a 999999999.
+- `$number` (requerido) El número a convertir.
 
-- `$currency` (opcional) recibe `string` con el nombre o definición de la moneda, ejemplo: soles, pesos, dólares, euros, etc. Valor por defecto es `''` o cadena vacia.
+- `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
-- `$upper` (opcional) recibe `boolean` para indicar si el resultado debe mostrarse en mayúculas o minúsculas. Valor por defecto es `true`.
+Para convertir un número a letras en formato moneda.
+
+```php
+use Luecano\NumeroALetras\NumeroALetras;
+
+$formatter = new NumeroALetras;
+echo $formatter->toMoney($number, $decimals, $currency, $cents)
+```
+
+Parámetros:
+
+- `$number` (requerido) El número a convertir.
+
+- `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+
+- `$currency` (opcional) Establece el nombre o código de moneda para la parte entera, valor por defecto es ''.
+
+- `$cents` (opcional) Establece el nombre o código para la parte decimal, valor por defecto es ''.
+
+Para convertir un número a letras en formato de factura electrónica.
+
+```php
+use Luecano\NumeroALetras\NumeroALetras;
+
+$formatter = new NumeroALetras;
+echo $formatter->toInvoice($number, $decimals, $currency)
+```
+
+Parámetros:
+
+- `$number` (requerido) El número a convertir.
+
+- `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+
+- `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es ''.
 
 ## Ejemplos
 
@@ -65,16 +91,6 @@ echo $numeroALetras;
 //CIEN CON 00/100 PESOS
 ```
 
-```php
-$numeroALetras = NumeroALetras::convert(101, 'soles');
-echo $numeroALetras;
+### Documentación v1.4
 
-//CIENTO UNO CON 00/100 SOLES
-```
-
-```php
-$numeroALetras = NumeroALetras::convert(38230.44, 'dólares');
-echo $numeroALetras;
-
-//TREINTA Y OCHO MIL DOSCIENTOS TREINTA CON 44/100 DÓLARES
-```
+Para consultar la versión anterior por favor usar [1.4 branch](https://github.com/luecano/numero-a-letras/tree/1.4).
