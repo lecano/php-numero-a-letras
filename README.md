@@ -98,7 +98,7 @@ echo $formatter->toWords($number);
 use Luecano\NumeroALetras\NumeroALetras;
 
 $formatter = new NumeroALetras;
-echo $formatter->toWords(1100)
+echo $formatter->toWords(1100);
 
 //MIL CIEN
 ```
