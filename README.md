@@ -17,7 +17,7 @@ composer require luecano/numero-a-letras
 
 ## Uso
 
-Para convertir un número a letras.
+### Convertir un número a letras
 
 ```php
 use Luecano\NumeroALetras\NumeroALetras;
@@ -32,7 +32,7 @@ Parámetros:
 
 - `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
-Para convertir un número a letras en formato moneda.
+### Convertir un número a letras en formato moneda
 
 ```php
 use Luecano\NumeroALetras\NumeroALetras;
@@ -51,7 +51,7 @@ Parámetros:
 
 - `$cents` (opcional) Establece el nombre o código para la parte decimal, valor por defecto es ''.
 
-Para convertir un número a letras en formato de facturación electrónica SUNAT.
+### Convertir un número a letras en formato de facturación electrónica SUNAT
 
 ```php
 use Luecano\NumeroALetras\NumeroALetras;
