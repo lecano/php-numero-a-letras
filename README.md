@@ -73,11 +73,8 @@ Parámetros:
 Para cambiar la palabra 'UNO' por 'UN' hacer lo siguiente:
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 $formatter->apocope = true;
-echo $formatter->toWords($number);
 ```
 
 ### Conector
@@ -85,11 +82,8 @@ echo $formatter->toWords($number);
 Para cambiar la palabra 'CON' por otra de su preferencia hacer lo siguiente:
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 $formatter->conector = 'Y';
-echo $formatter->toWords($number);
 ```
 
 ## Ejemplos
@@ -101,6 +95,14 @@ $formatter = new NumeroALetras;
 echo $formatter->toWords(1100);
 
 //MIL CIEN
+```
+
+```php
+use Luecano\NumeroALetras\NumeroALetras;
+
+echo (new NumeroALetras)->toMoney(2500.90, 2, 'DÓLARES', 'CENTAVOS');
+
+//DOS MIL QUINIENTOS DÓLARES CON NOVENTA CENTAVOS
 ```
 
 ```php
