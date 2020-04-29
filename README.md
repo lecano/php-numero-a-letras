@@ -17,11 +17,15 @@ composer require luecano/numero-a-letras
 
 ## Uso
 
-### Convertir un número a letras
+Agregar referencia a librería.
 
 ```php
 use Luecano\NumeroALetras\NumeroALetras;
+```
 
+### Convertir un número a letras
+
+```php
 $formatter = new NumeroALetras;
 echo $formatter->toWords($number, $decimals);
 ```
@@ -35,8 +39,6 @@ Parámetros:
 ### Convertir un número a letras en formato moneda
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 echo $formatter->toMoney($number, $decimals, $currency, $cents);
 ```
@@ -54,8 +56,6 @@ Parámetros:
 ### Convertir un número a letras en formato de facturación electrónica SUNAT
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 echo $formatter->toInvoice($number, $decimals, $currency);
 ```
@@ -89,8 +89,6 @@ $formatter->conector = 'Y';
 ## Ejemplos
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 echo $formatter->toWords(1100);
 
@@ -98,16 +96,12 @@ echo $formatter->toWords(1100);
 ```
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 echo (new NumeroALetras)->toMoney(2500.90, 2, 'DÓLARES', 'CENTAVOS');
 
 //DOS MIL QUINIENTOS DÓLARES CON NOVENTA CENTAVOS
 ```
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 echo $formatter->toMoney(10.10, 2, 'SOLES', 'CENTIMOS');
 
@@ -115,8 +109,6 @@ echo $formatter->toMoney(10.10, 2, 'SOLES', 'CENTIMOS');
 ```
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 echo $formatter->toInvoice(1700.50, 2, 'soles');
 
@@ -124,8 +116,6 @@ echo $formatter->toInvoice(1700.50, 2, 'soles');
 ```
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 $formatter->apocope = true;
 echo $formatter->toWords(101) . ' AÑOS';
@@ -134,8 +124,6 @@ echo $formatter->toWords(101) . ' AÑOS';
 ```
 
 ```php
-use Luecano\NumeroALetras\NumeroALetras;
-
 $formatter = new NumeroALetras;
 $formatter->conector = 'Y';
 echo $formatter->toMoney(11.10, 2, 'pesos', 'centavos');
