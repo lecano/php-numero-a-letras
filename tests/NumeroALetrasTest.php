@@ -44,7 +44,7 @@ class NumeroALetrasTest extends TestCase
     public function testToInvoiceFloat()
     {
         $formatter = new NumeroALetras;
-        $this->assertEquals('MIL SETECIENTOS CON 50/100 SOLES', $formatter->toInvoice(1700.50, 2, 'soles'));
+        $this->assertEquals('MIL SETECIENTOS CON 50/100 SOLES', $formatter->toInvoice(1700.50, 2, 'SOLES'));
     }
 
     public function testApocope()
