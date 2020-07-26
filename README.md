@@ -20,6 +20,8 @@ composer require luecano/numero-a-letras
 Agregar referencia a librería.
 
 ```php
+
+require 'vendor/autoload.php';
 use Luecano\NumeroALetras\NumeroALetras;
 ```
 

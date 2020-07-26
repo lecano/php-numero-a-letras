@@ -6,6 +6,9 @@ use ParseError;
 
 class NumeroALetras
 {
+    /**
+     * @var array
+     */
     private $unidades = array(
         '',
         'UNO ',
@@ -30,6 +33,9 @@ class NumeroALetras
         'VEINTE '
     );
 
+    /**
+     * @var array
+     */
     private $decenas = array(
         'VEINTI',
         'TREINTA ',
@@ -42,6 +48,9 @@ class NumeroALetras
         'CIEN '
     );
 
+    /**
+     * @var array
+     */
     private $centenas = array(
         'CIENTO ',
         'DOSCIENTOS ',
@@ -54,15 +63,22 @@ class NumeroALetras
         'NOVECIENTOS '
     );
 
+    /**
+     * @var string
+     */
     public $conector = 'CON';
 
+    /**
+     * @var boolean
+     */
     public $apocope = false;
 
     /**
-     * Formatea y ejecuta la función conversora
-     * @param $number número a convertir
-     * @param $decimals número de puntos decimales
-     * @return string completo
+     * Formatea y convierte un número a letras
+     *
+     * @param integer|float $number
+     * @param integer $decimals
+     * @return string
      */
 
     public function toWords($number, $decimals = 2)
@@ -83,12 +99,13 @@ class NumeroALetras
     }
 
     /**
-     * Formatea y ejecuta la función conversora con formato moneda
-     * @param $number número a convertir
-     * @param $decimals número de puntos decimales
-     * @param $currency nombre de moneda
-     * @param $cents nombre de parte decimal
-     * @return string completo
+     * Formatea y convierte un número a letras en formato moneda
+     *
+     * @param integer|float $number
+     * @param integer $decimals
+     * @param string $currency
+     * @param string $cents
+     * @return string
      */
     public function toMoney($number, $decimals = 2, $currency = '', $cents = '')
     {
@@ -112,12 +129,12 @@ class NumeroALetras
     }
 
     /**
-     * Formatea y ejecuta la función conversora con formato para facturación
+     * Formatea y convierte un número a letras en formato facturación electrónica
      *
-     * @param $number número a convertir
-     * @param $decimals número de puntos decimales
-     * @param $currency nombre de moneda
-     * @return void
+     * @param integer|float $number
+     * @param integer $decimals
+     * @param string $currency
+     * @return string
      */
     public function toInvoice($number, $decimals = 2,  $currency = '')
     {
@@ -139,7 +156,7 @@ class NumeroALetras
     }
 
     /**
-     * Valida apócope de uno
+     * Valida si debe aplicarse apócope de uno
      *
      * @return void
      */
@@ -151,7 +168,7 @@ class NumeroALetras
     }
 
     /**
-     * Formatea y ejecuta la función conversora para la parte entera del número
+     * Formatea la parte entera del número a convertir
      *
      * @param string $number
      * @return string
@@ -168,7 +185,7 @@ class NumeroALetras
     }
 
     /**
-     * Concatena elementos en array
+     * Concatena las partes formateadas del número convertido
      *
      * @param array $splitNumber
      * @return string
@@ -180,10 +197,9 @@ class NumeroALetras
 
     /**
      * Convierte número a letras
-     * @param $number
-     * @param $miMoneda
-     * @param $type tipo de dígito (entero/decimal)
-     * @return $converted string convertido
+     *
+     * @param string $number
+     * @return string
      */
     private function convertNumber($number)
     {
@@ -226,9 +242,8 @@ class NumeroALetras
     }
 
     /**
-     * Define el tipo de representación decimal (centenas/millares/millones)
-     * @param $n
-     * @return $output
+     * @param string $n
+     * @return string
      */
     private function convertGroup($n)
     {
