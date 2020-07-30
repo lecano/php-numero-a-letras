@@ -34,9 +34,9 @@ echo $formatter->toWords($number, $decimals);
 
 Parámetros:
 
-- `$number` (requerido) El número a convertir.
+- `integer|float` `$number` (requerido) El número a convertir.
 
-- `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- `integer` `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
 ### Convertir un número a letras en formato moneda
 
@@ -47,13 +47,13 @@ echo $formatter->toMoney($number, $decimals, $currency, $cents);
 
 Parámetros:
 
-- `$number` (requerido) El número a convertir.
+- `integer|float` `$number` (requerido) El número a convertir.
 
-- `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- `integer` `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
-- `$currency` (opcional) Establece el nombre o código de moneda para la parte entera, valor por defecto es ''.
+- `string` `$currency` (opcional) Establece el nombre o código de moneda para la parte entera, valor por defecto es string vacío.
 
-- `$cents` (opcional) Establece el nombre o código para la parte decimal, valor por defecto es ''.
+- `string` `$cents` (opcional) Establece el nombre o código para la parte decimal, valor por defecto es string vacío.
 
 ### Convertir un número a letras en formato de facturación electrónica SUNAT
 
@@ -64,11 +64,11 @@ echo $formatter->toInvoice($number, $decimals, $currency);
 
 Parámetros:
 
-- `$number` (requerido) El número a convertir.
+- `integer|float` `$number` (requerido) El número a convertir.
 
-- `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- `integer` `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
-- `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es ''.
+- `string` `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es string vacío.
 
 ### Apócope de uno
 
@@ -135,4 +135,4 @@ echo $formatter->toMoney(11.10, 2, 'pesos', 'centavos');
 
 ### Documentación v1.4
 
-Para consultar la versión anterior por favor usar [1.4 branch](https://github.com/luecano/numero-a-letras/tree/1.4).
+Para consultar la versión v1 usar [1.4 branch](https://github.com/luecano/numero-a-letras/tree/1.4).
