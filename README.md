@@ -34,9 +34,9 @@ echo $formatter->toWords($number, $decimals);
 
 Parámetros:
 
-- `integer|float` `$number` (requerido) El número a convertir.
+- integer|float `$number` (requerido) El número a convertir.
 
-- `integer` `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- integer `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
 ### Convertir un número a letras en formato moneda
 
@@ -47,13 +47,13 @@ echo $formatter->toMoney($number, $decimals, $currency, $cents);
 
 Parámetros:
 
-- `integer|float` `$number` (requerido) El número a convertir.
+- integer|float `$number` (requerido) El número a convertir.
 
-- `integer` `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- integer `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
-- `string` `$currency` (opcional) Establece el nombre o código de moneda para la parte entera, valor por defecto es string vacío.
+- string `$currency` (opcional) Establece el nombre o código de moneda para la parte entera, valor por defecto es string vacío.
 
-- `string` `$cents` (opcional) Establece el nombre o código para la parte decimal, valor por defecto es string vacío.
+- string `$cents` (opcional) Establece el nombre o código para la parte decimal, valor por defecto es string vacío.
 
 ### Convertir un número a letras en formato de facturación electrónica SUNAT
 
@@ -64,11 +64,11 @@ echo $formatter->toInvoice($number, $decimals, $currency);
 
 Parámetros:
 
-- `integer|float` `$number` (requerido) El número a convertir.
+- integer|float `$number` (requerido) El número a convertir.
 
-- `integer` `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- integer `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
-- `string` `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es string vacío.
+- string `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es string vacío.
 
 ### Apócope de uno
 
