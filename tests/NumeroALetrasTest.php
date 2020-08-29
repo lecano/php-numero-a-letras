@@ -60,4 +60,10 @@ class NumeroALetrasTest extends TestCase
         $formatter->conector = 'Y';
         $this->assertEquals('DIEZ PESOS Y DIEZ CENTAVOS', $formatter->toMoney(10.10, 2, 'pesos', 'centavos'));
     }
+
+    public function testToString()
+    {
+        $formatter = new NumeroALetras;
+        $this->assertEquals('CINCO AÑOS CON DOS MESES', $formatter->toString(5.2, 1, 'años', 'meses'));
+    }
 }

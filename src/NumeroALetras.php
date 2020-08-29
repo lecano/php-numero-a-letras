@@ -115,17 +115,31 @@ class NumeroALetras
 
         $splitNumber = explode('.', $number);
 
-        $splitNumber[0] = $this->wholeNumber($splitNumber[0]) . ' ' . strtoupper($currency);
+        $splitNumber[0] = $this->wholeNumber($splitNumber[0]) . ' ' . mb_strtoupper($currency, 'UTF-8');
 
         if (!empty($splitNumber[1])) {
             $splitNumber[1] = $this->convertNumber($splitNumber[1]);
         }
 
         if (!empty($splitNumber[1])) {
-            $splitNumber[1] .= ' ' . strtoupper($cents);
+            $splitNumber[1] .= ' ' . mb_strtoupper($cents, 'UTF-8');
         }
 
         return $this->glue($splitNumber);
+    }
+
+    /**
+     * Formatea y convierte un número a letras en formato libre
+     *
+     * @param integer|float $number
+     * @param integer $decimals
+     * @param string $whole_str
+     * @param string $decimal_str
+     * @return string
+     */
+    public function toString($number, $decimals = 2, $whole_str = '', $decimal_str = '')
+    {
+        return $this->toMoney($number, $decimals, $whole_str, $decimal_str);
     }
 
     /**
@@ -152,7 +166,7 @@ class NumeroALetras
             $splitNumber[1] = '00/100 ';
         }
 
-        return $this->glue($splitNumber) . strtoupper($currency);
+        return $this->glue($splitNumber) . mb_strtoupper($currency, 'UTF-8');
     }
 
     /**
@@ -192,7 +206,7 @@ class NumeroALetras
      */
     private function glue($splitNumber)
     {
-        return implode(' ' . strtoupper($this->conector) . ' ', array_filter($splitNumber));
+        return implode(' ' . mb_strtoupper($this->conector, 'UTF-8') . ' ', array_filter($splitNumber));
     }
 
     /**
