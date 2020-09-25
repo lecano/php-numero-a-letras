@@ -105,7 +105,7 @@ $formatter = new NumeroALetras;
 $formatter->conector = 'Y';
 ```
 
-## Ejemplos
+## Ejemplos de uso
 
 ```php
 $formatter = new NumeroALetras;
@@ -160,3 +160,7 @@ echo $formatter->toString(5.2, 1, 'años', 'meses');
 ### Documentación v1.4
 
 Para consultar la versión v1 usar [1.4 branch](https://github.com/luecano/numero-a-letras/tree/1.4).
+
+## Licencia
+
+Software de código abierto con licencia [MIT license](LICENSE.md).
