@@ -163,4 +163,4 @@ Para consultar la versión v1 usar [1.4 branch](https://github.com/luecano/numer
 
 ## Licencia
 
-Software de código abierto con licencia [MIT license](LICENSE.md).
+Software de código abierto con licencia [MIT license](LICENSE).
