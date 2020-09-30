@@ -67,10 +67,10 @@ class NumeroALetras
      * @var array
      */
     private $acentosExecpciones = array(
-        'DIECISEIS' => 'DIECISÉIS',
-        'VEINTIDOS' => 'VEINTIDÓS',
-        'VEINTITRES' => 'VEINTITRÉS',
-        'VEINTISEIS' => 'VEINTISÉIS'
+        'DIECISEIS' => 'DIECISÉIS ',
+        'VEINTIDOS' => 'VEINTIDÓS ',
+        'VEINTITRES' => 'VEINTITRÉS ',
+        'VEINTISEIS' => 'VEINTISÉIS '
     );
 
     /**
@@ -291,6 +291,7 @@ class NumeroALetras
             }
         }
 
-        return $this->acentosExecpciones[trim($output)] ?: $output;
+        return array_key_exists(trim($output), $this->acentosExecpciones) ?
+            $this->acentosExecpciones[trim($output)] : $output;
     }
 }

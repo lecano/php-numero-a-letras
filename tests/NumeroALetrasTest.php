@@ -13,6 +13,7 @@ class NumeroALetrasTest extends TestCase
         $formatter = new NumeroALetras;
 
         $this->assertEquals('CIEN', $formatter->toWords(100));
+        $this->assertEquals('DIECISÉIS', $formatter->toWords(16));
     }
 
     public function testToWordsThousands()
