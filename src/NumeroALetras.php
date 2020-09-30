@@ -282,16 +282,18 @@ class NumeroALetras
         $k = intval(substr($n, 1));
 
         if ($k <= 20) {
-            $output .= $this->unidades[$k];
+            $unidades = $this->unidades[$k];
         } else {
             if (($k > 30) && ($n[2] !== '0')) {
-                $output .= sprintf('%sY %s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
+                $unidades = sprintf('%sY %s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
             } else {
-                $output .= sprintf('%s%s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
+                $unidades = sprintf('%s%s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
             }
         }
 
-        return array_key_exists(trim($output), $this->acentosExecpciones) ?
-            $this->acentosExecpciones[trim($output)] : $output;
+        $output .= array_key_exists(trim($unidades), $this->acentosExecpciones) ?
+            $this->acentosExecpciones[trim($unidades)] : $unidades;
+
+        return $output;
     }
 }
