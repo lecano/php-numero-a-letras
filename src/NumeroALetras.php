@@ -64,6 +64,16 @@ class NumeroALetras
     );
 
     /**
+     * @var array
+     */
+    private $acentosExecpciones = array(
+        'DIECISEIS' => 'DIECISÉIS',
+        'VEINTIDOS' => 'VEINTIDÓS',
+        'VEINTITRES' => 'VEINTITRÉS',
+        'VEINTISEIS' => 'VEINTISÉIS'
+    );
+
+    /**
      * @var string
      */
     public $conector = 'CON';
@@ -281,6 +291,6 @@ class NumeroALetras
             }
         }
 
-        return $output;
+        return $this->acentosExecpciones[trim($output)] ?: $output;
     }
 }
