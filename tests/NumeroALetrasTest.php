@@ -8,11 +8,26 @@ use PHPUnit\Framework\TestCase;
 
 class NumeroALetrasTest extends TestCase
 {
-    public function testToWords()
+
+    public function MethodToWordsProvider(){
+        return [
+            [ 100, 'CIEN' ],
+            [ 16, 'DIECISÉIS' ],
+            [ 1016,'MIL DIECISÉIS' ],
+            [ 84, 'OCHENTA Y CUATRO' ]
+        ];
+    }
+
+    /**
+     * @dataProvider MethodToWordsProvider
+     * @param int $number
+     * @param string $expected
+     */
+    public function testToWords(int $number, string $expected)
     {
         $formatter = new NumeroALetras;
 
-        $this->assertEquals('CIEN', $formatter->toWords(100));
+        $this->assertEquals($expected, $formatter->toWords($number));
     }
 
     public function testToWordsThousands()

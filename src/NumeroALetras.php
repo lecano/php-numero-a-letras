@@ -64,6 +64,16 @@ class NumeroALetras
     );
 
     /**
+     * @var array
+     */
+    private $acentosExecpciones = array(
+        'DIECISEIS' => 'DIECISÉIS ',
+        'VEINTIDOS' => 'VEINTIDÓS ',
+        'VEINTITRES' => 'VEINTITRÉS ',
+        'VEINTISEIS' => 'VEINTISÉIS '
+    );
+
+    /**
      * @var string
      */
     public $conector = 'CON';
@@ -272,14 +282,17 @@ class NumeroALetras
         $k = intval(substr($n, 1));
 
         if ($k <= 20) {
-            $output .= $this->unidades[$k];
+            $unidades = $this->unidades[$k];
         } else {
             if (($k > 30) && ($n[2] !== '0')) {
-                $output .= sprintf('%sY %s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
+                $unidades = sprintf('%sY %s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
             } else {
-                $output .= sprintf('%s%s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
+                $unidades = sprintf('%s%s', $this->decenas[intval($n[1]) - 2], $this->unidades[intval($n[2])]);
             }
         }
+
+        $output .= array_key_exists(trim($unidades), $this->acentosExecpciones) ?
+            $this->acentosExecpciones[trim($unidades)] : $unidades;
 
         return $output;
     }
