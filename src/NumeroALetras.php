@@ -9,7 +9,7 @@ class NumeroALetras
     /**
      * @var array
      */
-    private $unidades = array(
+    private $unidades = [
         '',
         'UNO ',
         'DOS ',
@@ -30,13 +30,13 @@ class NumeroALetras
         'DIECISIETE ',
         'DIECIOCHO ',
         'DIECINUEVE ',
-        'VEINTE '
-    );
+        'VEINTE ',
+    ];
 
     /**
      * @var array
      */
-    private $decenas = array(
+    private $decenas = [
         'VEINTI',
         'TREINTA ',
         'CUARENTA ',
@@ -45,13 +45,13 @@ class NumeroALetras
         'SETENTA ',
         'OCHENTA ',
         'NOVENTA ',
-        'CIEN '
-    );
+        'CIEN ',
+    ];
 
     /**
      * @var array
      */
-    private $centenas = array(
+    private $centenas = [
         'CIENTO ',
         'DOSCIENTOS ',
         'TRESCIENTOS ',
@@ -60,18 +60,18 @@ class NumeroALetras
         'SEISCIENTOS ',
         'SETECIENTOS ',
         'OCHOCIENTOS ',
-        'NOVECIENTOS '
-    );
+        'NOVECIENTOS ',
+    ];
 
     /**
      * @var array
      */
-    private $acentosExecpciones = array(
-        'DIECISEIS' => 'DIECISÉIS ',
-        'VEINTIDOS' => 'VEINTIDÓS ',
+    private $acentosExecpciones = [
+        'DIECISEIS'  => 'DIECISÉIS ',
+        'VEINTIDOS'  => 'VEINTIDÓS ',
         'VEINTITRES' => 'VEINTITRÉS ',
-        'VEINTISEIS' => 'VEINTISÉIS '
-    );
+        'VEINTISEIS' => 'VEINTISÉIS ',
+    ];
 
     /**
      * @var string
@@ -79,18 +79,18 @@ class NumeroALetras
     public $conector = 'CON';
 
     /**
-     * @var boolean
+     * @var bool
      */
     public $apocope = false;
 
     /**
-     * Formatea y convierte un número a letras
+     * Formatea y convierte un número a letras.
      *
-     * @param integer|float $number
-     * @param integer $decimals
+     * @param int|float $number
+     * @param int       $decimals
+     *
      * @return string
      */
-
     public function toWords($number, $decimals = 2)
     {
         $this->checkApocope();
@@ -109,12 +109,13 @@ class NumeroALetras
     }
 
     /**
-     * Formatea y convierte un número a letras en formato moneda
+     * Formatea y convierte un número a letras en formato moneda.
      *
-     * @param integer|float $number
-     * @param integer $decimals
-     * @param string $currency
-     * @param string $cents
+     * @param int|float $number
+     * @param int       $decimals
+     * @param string    $currency
+     * @param string    $cents
+     *
      * @return string
      */
     public function toMoney($number, $decimals = 2, $currency = '', $cents = '')
@@ -139,12 +140,13 @@ class NumeroALetras
     }
 
     /**
-     * Formatea y convierte un número a letras en formato libre
+     * Formatea y convierte un número a letras en formato libre.
      *
-     * @param integer|float $number
-     * @param integer $decimals
-     * @param string $whole_str
-     * @param string $decimal_str
+     * @param int|float $number
+     * @param int       $decimals
+     * @param string    $whole_str
+     * @param string    $decimal_str
+     *
      * @return string
      */
     public function toString($number, $decimals = 2, $whole_str = '', $decimal_str = '')
@@ -153,14 +155,15 @@ class NumeroALetras
     }
 
     /**
-     * Formatea y convierte un número a letras en formato facturación electrónica
+     * Formatea y convierte un número a letras en formato facturación electrónica.
      *
-     * @param integer|float $number
-     * @param integer $decimals
-     * @param string $currency
+     * @param int|float $number
+     * @param int       $decimals
+     * @param string    $currency
+     *
      * @return string
      */
-    public function toInvoice($number, $decimals = 2,  $currency = '')
+    public function toInvoice($number, $decimals = 2, $currency = '')
     {
         $this->checkApocope();
 
@@ -180,7 +183,7 @@ class NumeroALetras
     }
 
     /**
-     * Valida si debe aplicarse apócope de uno
+     * Valida si debe aplicarse apócope de uno.
      *
      * @return void
      */
@@ -192,9 +195,10 @@ class NumeroALetras
     }
 
     /**
-     * Formatea la parte entera del número a convertir
+     * Formatea la parte entera del número a convertir.
      *
      * @param string $number
+     *
      * @return string
      */
     private function wholeNumber($number)
@@ -209,9 +213,10 @@ class NumeroALetras
     }
 
     /**
-     * Concatena las partes formateadas del número convertido
+     * Concatena las partes formateadas del número convertido.
      *
      * @param array $splitNumber
+     *
      * @return string
      */
     private function glue($splitNumber)
@@ -220,9 +225,10 @@ class NumeroALetras
     }
 
     /**
-     * Convierte número a letras
+     * Convierte número a letras.
      *
      * @param string $number
+     *
      * @return string
      */
     private function convertNumber($number)
@@ -230,7 +236,7 @@ class NumeroALetras
         $converted = '';
 
         if (($number < 0) || ($number > 999999999)) {
-            throw new ParseError("Wrong parameter number");
+            throw new ParseError('Wrong parameter number');
         }
 
         $numberStrFill = str_pad($number, 9, '0', STR_PAD_LEFT);
@@ -241,7 +247,7 @@ class NumeroALetras
         if (intval($millones) > 0) {
             if ($millones == '001') {
                 $converted .= 'UN MILLON ';
-            } else if (intval($millones) > 0) {
+            } elseif (intval($millones) > 0) {
                 $converted .= sprintf('%sMILLONES ', $this->convertGroup($millones));
             }
         }
@@ -249,7 +255,7 @@ class NumeroALetras
         if (intval($miles) > 0) {
             if ($miles == '001') {
                 $converted .= 'MIL ';
-            } else if (intval($miles) > 0) {
+            } elseif (intval($miles) > 0) {
                 $converted .= sprintf('%sMIL ', $this->convertGroup($miles));
             }
         }
@@ -257,7 +263,7 @@ class NumeroALetras
         if (intval($cientos) > 0) {
             if ($cientos == '001') {
                 $this->apocope === true ? $converted .= 'UN ' : $converted .= 'UNO ';
-            } else if (intval($cientos) > 0) {
+            } elseif (intval($cientos) > 0) {
                 $converted .= sprintf('%s ', $this->convertGroup($cientos));
             }
         }
@@ -267,6 +273,7 @@ class NumeroALetras
 
     /**
      * @param string $n
+     *
      * @return string
      */
     private function convertGroup($n)
@@ -274,8 +281,8 @@ class NumeroALetras
         $output = '';
 
         if ($n == '100') {
-            $output = "CIEN ";
-        } else if ($n[0] !== '0') {
+            $output = 'CIEN ';
+        } elseif ($n[0] !== '0') {
             $output = $this->centenas[$n[0] - 1];
         }
 
