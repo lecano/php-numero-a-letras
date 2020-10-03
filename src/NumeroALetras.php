@@ -26,7 +26,7 @@ class NumeroALetras
         'TRECE ',
         'CATORCE ',
         'QUINCE ',
-        'DIECISEIS ',
+        'DIECISÉIS ',
         'DIECISIETE ',
         'DIECIOCHO ',
         'DIECINUEVE ',
@@ -66,8 +66,7 @@ class NumeroALetras
     /**
      * @var array
      */
-    private $acentosExecpciones = [
-        'DIECISEIS'  => 'DIECISÉIS ',
+    private $acentosExcepciones = [
         'VEINTIDOS'  => 'VEINTIDÓS ',
         'VEINTITRES' => 'VEINTITRÉS ',
         'VEINTISEIS' => 'VEINTISÉIS ',
@@ -298,8 +297,8 @@ class NumeroALetras
             }
         }
 
-        $output .= array_key_exists(trim($unidades), $this->acentosExecpciones) ?
-            $this->acentosExecpciones[trim($unidades)] : $unidades;
+        $output .= array_key_exists(trim($unidades), $this->acentosExcepciones) ?
+            $this->acentosExcepciones[trim($unidades)] : $unidades;
 
         return $output;
     }

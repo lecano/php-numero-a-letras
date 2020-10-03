@@ -29,7 +29,7 @@ use Luecano\NumeroALetras\NumeroALetras;
 ### Convertir un número a letras o palabras
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toWords($number, $decimals);
 ```
 
@@ -42,7 +42,7 @@ Parámetros:
 ### Convertir un número a letras en formato moneda
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toMoney($number, $decimals, $currency, $cents);
 ```
 
@@ -59,7 +59,7 @@ Parámetros:
 ### Convertir un número a letras en formato libre
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toString($number, $decimals, $whole_str, $decimal_str);
 ```
 
@@ -76,7 +76,7 @@ Parámetros:
 ### Convertir un número a letras en formato de facturación electrónica SUNAT
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toInvoice($number, $decimals, $currency);
 ```
 
@@ -93,7 +93,7 @@ Parámetros:
 Para cambiar la palabra 'UNO' por 'UN' hacer lo siguiente:
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 $formatter->apocope = true;
 ```
 
@@ -102,21 +102,21 @@ $formatter->apocope = true;
 Para cambiar la palabra 'CON' por otra de su preferencia hacer lo siguiente:
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 $formatter->conector = 'Y';
 ```
 
 ## Ejemplos de uso
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toWords(1100);
 
 //MIL CIEN
 ```
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 $formatter->apocope = true;
 echo $formatter->toWords(101) . ' AÑOS';
 
@@ -124,20 +124,20 @@ echo $formatter->toWords(101) . ' AÑOS';
 ```
 
 ```php
-echo (new NumeroALetras)->toMoney(2500.90, 2, 'DÓLARES', 'CENTAVOS');
+echo (new NumeroALetras())->toMoney(2500.90, 2, 'DÓLARES', 'CENTAVOS');
 
 //DOS MIL QUINIENTOS DÓLARES CON NOVENTA CENTAVOS
 ```
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toMoney(10.10, 2, 'SOLES', 'CENTIMOS');
 
 //DIEZ SOLES CON DIEZ CENTIMOS
 ```
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 $formatter->conector = 'Y';
 echo $formatter->toMoney(11.10, 2, 'pesos', 'centavos');
 
@@ -145,14 +145,14 @@ echo $formatter->toMoney(11.10, 2, 'pesos', 'centavos');
 ```
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toInvoice(1700.50, 2, 'soles');
 
 //MIL SETECIENTOS CON 50/100 SOLES
 ```
 
 ```php
-$formatter = new NumeroALetras;
+$formatter = new NumeroALetras();
 echo $formatter->toString(5.2, 1, 'años', 'meses');
 
 //CINCO AÑOS CON DOS MESES
