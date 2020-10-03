@@ -1,7 +1,7 @@
 ## Número a Letras PHP
 
 [![tests](https://github.com/luecano/numero-a-letras/workflows/tests/badge.svg)](https://github.com/luecano/numero-a-letras/actions)
-[![StyleCI](https://github.styleci.io/repos/156258800/shield?branch=master)](https://github.styleci.io/repos/156258800?style=flat&branch=master)
+[![StyleCI](https://github.styleci.io/repos/156258800/shield?style=flat&branch=master)](https://github.styleci.io/repos/156258800?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/luecano/numero-a-letras/v/stable)](https://packagist.org/packages/luecano/numero-a-letras)
 [![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads)](https://packagist.org/packages/luecano/numero-a-letras)
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
