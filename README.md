@@ -3,7 +3,7 @@
 [![tests](https://github.com/luecano/numero-a-letras/workflows/tests/badge.svg)](https://github.com/luecano/numero-a-letras/actions)
 [![StyleCI](https://github.styleci.io/repos/156258800/shield?style=flat&branch=master)](https://github.styleci.io/repos/156258800?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/luecano/numero-a-letras/v/stable)](https://packagist.org/packages/luecano/numero-a-letras)
-[![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads)](https://packagist.org/packages/luecano/numero-a-letras)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/luecano/numero-a-letras)](https://packagist.org/packages/luecano/numero-a-letras)
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
 
 Librería PHP para convertir un número a su valor correspondiente en letras, palabras o texto.
@@ -35,9 +35,9 @@ echo $formatter->toWords($number, $decimals);
 
 Parámetros:
 
-- integer|float `$number` (requerido) El número a convertir.
+- int|float `$number` (requerido) El número a convertir.
 
-- integer `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
 ### Convertir un número a letras en formato moneda
 
@@ -48,9 +48,9 @@ echo $formatter->toMoney($number, $decimals, $currency, $cents);
 
 Parámetros:
 
-- integer|float `$number` (requerido) El número a convertir.
+- int|float `$number` (requerido) El número a convertir.
 
-- integer `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
 - string `$currency` (opcional) Establece el nombre o código de moneda para la parte entera, valor por defecto es string vacío.
 
@@ -65,9 +65,9 @@ echo $formatter->toString($number, $decimals, $whole_str, $decimal_str);
 
 Parámetros:
 
-- integer|float `$number` (requerido) El número a convertir.
+- int|float `$number` (requerido) El número a convertir.
 
-- integer `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
 - string `$whole_str` (opcional) Establece el texto para la parte entera, valor por defecto es string vacío.
 
@@ -82,9 +82,9 @@ echo $formatter->toInvoice($number, $decimals, $currency);
 
 Parámetros:
 
-- integer|float `$number` (requerido) El número a convertir.
+- int|float `$number` (requerido) El número a convertir.
 
-- integer `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
 
 - string `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es string vacío.
 
@@ -157,6 +157,10 @@ echo $formatter->toString(5.2, 1, 'años', 'meses');
 
 //CINCO AÑOS CON DOS MESES
 ```
+
+### Contribuciones
+
+Se aceptan contribuciones siguiendo el [GitHub Flow](https://guides.github.com/introduction/flow). Crea una rama, agrega commits y abre un pull request.
 
 ### Documentación v1.4
 
