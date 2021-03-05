@@ -10,7 +10,7 @@ Librería PHP para convertir un número a su valor correspondiente en letras, pa
 
 ## Requerimientos
 
-PHP `7.2` o superior
+PHP `7.2` o superior.
 
 ## Instalar
 
