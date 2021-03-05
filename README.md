@@ -8,6 +8,10 @@
 
 Librería PHP para convertir un número a su valor correspondiente en letras, palabras o texto.
 
+## Requerimientos
+
+PHP `7.2` o superior
+
 ## Instalar
 
 Instalar usando Composer
