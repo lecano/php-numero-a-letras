@@ -168,7 +168,7 @@ echo $formatter->toString(5.2, 1, 'años', 'meses');
 //CINCO AÑOS CON DOS MESES
 ```
 
-### Contribuciones
+## Contribuciones
 
 Se aceptan contribuciones siguiendo el [GitHub Flow](https://guides.github.com/introduction/flow). Crea una rama, agrega commits y abre un pull request.
 
