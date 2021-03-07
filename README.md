@@ -3,7 +3,7 @@
 [![tests](https://github.com/luecano/numero-a-letras/workflows/tests/badge.svg)](https://github.com/luecano/numero-a-letras/actions)
 [![StyleCI](https://github.styleci.io/repos/156258800/shield?style=flat&branch=master)](https://github.styleci.io/repos/156258800?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/luecano/numero-a-letras/v/stable)](https://packagist.org/packages/luecano/numero-a-letras)
-[![Packagist Downloads](https://img.shields.io/packagist/dt/luecano/numero-a-letras)](https://packagist.org/packages/luecano/numero-a-letras)
+[![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads)](https://packagist.org/packages/luecano/numero-a-letras)
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
 
 Librería PHP para convertir un número a su valor correspondiente en letras, palabras o texto.
@@ -14,13 +14,13 @@ PHP `7.2` o superior.
 
 ## Instalar
 
-Usando composer para PHP 7.2 o superior:
+Para PHP 7.2 o superior:
 
 ```bash
 composer require luecano/numero-a-letras
 ```
 
-Usando composer para PHP 5.6, 7.1 o inferior:
+Para PHP 5.6, 7.1 o inferior:
 
 ```bash
 composer require luecano/numero-a-letras "^2.0"
@@ -171,10 +171,6 @@ echo $formatter->toString(5.2, 1, 'años', 'meses');
 ### Contribuciones
 
 Se aceptan contribuciones siguiendo el [GitHub Flow](https://guides.github.com/introduction/flow). Crea una rama, agrega commits y abre un pull request.
-
-### Documentación v1.4
-
-Para consultar la versión v1 usar [1.4 branch](https://github.com/luecano/numero-a-letras/tree/1.4).
 
 ## Licencia
 
