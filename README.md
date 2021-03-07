@@ -8,16 +8,22 @@
 
 Librería PHP para convertir un número a su valor correspondiente en letras, palabras o texto.
 
-## Requerimientos
+## Requisitos
 
 PHP `7.2` o superior.
 
 ## Instalar
 
-Instalar usando Composer
+Usando composer para PHP 7.2 o superior:
 
 ```bash
 composer require luecano/numero-a-letras
+```
+
+Usando composer para PHP 5.6, 7.1 o inferior:
+
+```bash
+composer require luecano/numero-a-letras "^2.0"
 ```
 
 ## Uso
