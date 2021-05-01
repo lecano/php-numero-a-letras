@@ -47,7 +47,7 @@ Parámetros:
 
 - int|float `$number` (requerido) El número a convertir.
 
-- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de decimales, valor por defecto es 2.
 
 ### Convertir un número a letras en formato moneda
 
@@ -60,7 +60,7 @@ Parámetros:
 
 - int|float `$number` (requerido) El número a convertir.
 
-- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de decimales, valor por defecto es 2.
 
 - string `$currency` (opcional) Establece el nombre o código de moneda para la parte entera, valor por defecto es string vacío.
 
@@ -77,7 +77,7 @@ Parámetros:
 
 - int|float `$number` (requerido) El número a convertir.
 
-- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de decimales, valor por defecto es 2.
 
 - string `$whole_str` (opcional) Establece el texto para la parte entera, valor por defecto es string vacío.
 
@@ -94,7 +94,7 @@ Parámetros:
 
 - int|float `$number` (requerido) El número a convertir.
 
-- int `$decimals` (opcional) Establece el número de puntos decimales, valor por defecto es 2.
+- int `$decimals` (opcional) Establece el número de decimales, valor por defecto es 2.
 
 - string `$currency` (opcional) Establece el nombre o código de moneda, valor por defecto es string vacío.
 
@@ -134,7 +134,8 @@ echo $formatter->toWords(101) . ' AÑOS';
 ```
 
 ```php
-echo (new NumeroALetras())->toMoney(2500.90, 2, 'DÓLARES', 'CENTAVOS');
+$formatter = new NumeroALetras();
+echo $formatter->toMoney(2500.90, 2, 'DÓLARES', 'CENTAVOS');
 
 //DOS MIL QUINIENTOS DÓLARES CON NOVENTA CENTAVOS
 ```
