@@ -17,7 +17,7 @@ PHP `7.2` o superior.
 Para PHP 7.2 o superior:
 
 ```bash
-composer require luecano/numero-a-letras
+composer require luecano/numero-a-letras "^3.0"
 ```
 
 Para PHP 5.6, 7.1 o inferior:
