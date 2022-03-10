@@ -8,10 +8,6 @@
 
 Librería PHP para convertir un número a su valor escrito en [numeral](https://es.wikipedia.org/wiki/Numeral_(ling%C3%BC%C3%ADstica)) (letras, palabras o texto).
 
-## Requisitos
-
-PHP `7.2` o superior.
-
 ## Instalar
 
 PHP 7.2 o superior:
