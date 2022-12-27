@@ -10,7 +10,7 @@ Librería PHP para convertir un número a letras, palabras o texto.
 
 ## Instalar
 
-PHP 7.2 o superior:
+PHP 7.2+ y 8.0+:
 
 ```bash
 composer require luecano/numero-a-letras "^3.0"
