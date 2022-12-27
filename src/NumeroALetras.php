@@ -245,7 +245,7 @@ class NumeroALetras
 
         if (intval($millones) > 0) {
             if ($millones == '001') {
-                $converted .= 'UN MILLON ';
+                $converted .= 'UN MILLÓN ';
             } elseif (intval($millones) > 0) {
                 $converted .= sprintf('%sMILLONES ', $this->convertGroup($millones));
             }
