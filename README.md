@@ -6,6 +6,8 @@
 [![Total Downloads](https://poser.pugx.org/luecano/numero-a-letras/downloads)](//packagist.org/packages/luecano/numero-a-letras)
 [![License](https://poser.pugx.org/luecano/numero-a-letras/license)](https://packagist.org/packages/luecano/numero-a-letras)
 
+![Logo](https://repository-images.githubusercontent.com/156258800/e185da75-4a14-42bb-a99c-77d90ac17e07)
+
 Librería PHP para convertir un número a letras, palabras o texto.
 
 ## Instalar
