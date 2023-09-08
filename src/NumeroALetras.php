@@ -234,7 +234,7 @@ class NumeroALetras
     {
         $converted = '';
 
-        if (($number < 0) || ($number > 999999999)) {
+        if (($number < 0) || ($number > 1000000000000)) {
             throw new ParseError('Wrong parameter number');
         }
 
