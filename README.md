@@ -10,15 +10,25 @@
 
 Librería PHP para convertir un número a letras, palabras o texto.
 
-## Instalar
+## Introducción
 
-PHP 7.2+ y 8.0+:
+`numero-a-letras` es una librería PHP que permite convertir números a su representación en palabras. Es útil para generar textos como "mil doscientos treinta y cuatro" a partir del número 1234.
+
+## Instalación
+
+### PHP ^8.2:
+
+```bash
+composer require luecano/numero-a-letras "^4.0"
+```
+
+PHP 7.2 a 8.1:
 
 ```bash
 composer require luecano/numero-a-letras "^3.0"
 ```
 
-PHP 5.6, 7.0 y 7.1:
+PHP 5.6 a 7.1:
 
 ```bash
 composer require luecano/numero-a-letras "^2.0"
@@ -30,7 +40,7 @@ Agregar referencia a librería.
 
 ```php
 
-require 'vendor/autoload.php';
+require 'vendor/autoload.php'; // Línea no necesaria si se usa frameworks como Laravel
 use Luecano\NumeroALetras\NumeroALetras;
 ```
 
