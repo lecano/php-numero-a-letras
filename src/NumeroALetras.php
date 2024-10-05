@@ -6,13 +6,12 @@ use ParseError;
 
 class NumeroALetras
 {
-
     /**
-     * @var array $unidades
-     * 
+     * @var array
+     *
      * Array that contains the Spanish words for numbers from 0 to 20.
      * Each index corresponds to the number it represents.
-     * 
+     *
      * Example:
      * - $unidades[1] returns 'UNO '
      * - $unidades[10] returns 'DIEZ '
@@ -42,8 +41,8 @@ class NumeroALetras
     ];
 
     /**
-     * @var array $decenas Array containing Spanish words for tens (decades).
-     * 
+     * @var array Array containing Spanish words for tens (decades).
+     *
      * This array is used to convert numbers into their corresponding Spanish words
      * for tens. The values represent the words for twenty, thirty, forty, fifty,
      * sixty, seventy, eighty, ninety, and one hundred.
@@ -79,11 +78,11 @@ class NumeroALetras
 
     /**
      * Array of exceptions for accented words.
-     * 
-     * This array contains specific words that require accents in their 
-     * representation. The key is the word without the accent, and the 
+     *
+     * This array contains specific words that require accents in their
+     * representation. The key is the word without the accent, and the
      * value is the word with the correct accent.
-     * 
+     *
      * @var array
      */
     private $acentosExcepciones = [
@@ -93,13 +92,13 @@ class NumeroALetras
     ];
 
     /**
-     * @var string $conector The connector string used in the NumeroALetras class.
+     * @var string The connector string used in the NumeroALetras class.
      */
     public $conector = 'CON';
 
     /**
-     * @var bool $apocope
-     * 
+     * @var bool
+     *
      * This property determines whether the apocope (shortened form) of numbers should be used.
      * When set to true, the apocope form will be applied.
      * Default value is false.
@@ -109,8 +108,9 @@ class NumeroALetras
     /**
      * Converts a numeric value to its word representation.
      *
-     * @param float|int $number The number to be converted.
-     * @param int $decimals The number of decimal places to consider. Default is 2.
+     * @param float|int $number   The number to be converted.
+     * @param int       $decimals The number of decimal places to consider. Default is 2.
+     *
      * @return string The word representation of the number.
      */
     public function toWords(float|int $number, int $decimals = 2): string
@@ -133,10 +133,11 @@ class NumeroALetras
     /**
      * Converts a numeric value to its money representation in words.
      *
-     * @param float $number The numeric value to be converted.
-     * @param int $decimals The number of decimal places to consider. Default is 2.
+     * @param float  $number   The numeric value to be converted.
+     * @param int    $decimals The number of decimal places to consider. Default is 2.
      * @param string $currency The currency to append to the whole number part. Default is an empty string.
-     * @param string $cents The currency to append to the decimal part. Default is an empty string.
+     * @param string $cents    The currency to append to the decimal part. Default is an empty string.
+     *
      * @return string The money representation of the number in words.
      */
     public function toMoney(float $number, int $decimals = 2, string $currency = '', string $cents = ''): string
@@ -163,10 +164,11 @@ class NumeroALetras
     /**
      * Converts a number to its string representation.
      *
-     * @param float|int $number The number to be converted.
-     * @param int $decimals The number of decimal places to include in the string representation. Default is 2.
-     * @param string $whole_str The string to use for the whole number part. Default is an empty string.
-     * @param string $decimal_str The string to use for the decimal part. Default is an empty string.
+     * @param float|int $number      The number to be converted.
+     * @param int       $decimals    The number of decimal places to include in the string representation. Default is 2.
+     * @param string    $whole_str   The string to use for the whole number part. Default is an empty string.
+     * @param string    $decimal_str The string to use for the decimal part. Default is an empty string.
+     *
      * @return string The string representation of the number.
      */
     public function toString(float|int $number, int $decimals = 2, string $whole_str = '', string $decimal_str = ''): string
@@ -177,9 +179,10 @@ class NumeroALetras
     /**
      * Converts a number to its invoice representation in words.
      *
-     * @param float $number The number to be converted.
-     * @param int $decimals The number of decimal places to consider. Default is 2.
+     * @param float  $number   The number to be converted.
+     * @param int    $decimals The number of decimal places to consider. Default is 2.
      * @param string $currency The currency to append to the converted number. Default is an empty string.
+     *
      * @return string The number converted to its invoice representation in words, followed by the currency in uppercase.
      */
     public function toInvoice(float $number, int $decimals = 2, string $currency = ''): string
@@ -223,6 +226,7 @@ class NumeroALetras
      * method to convert the number.
      *
      * @param string $number The numeric string to be converted.
+     *
      * @return string The word representation of the number.
      */
     private function wholeNumber(string $number): string
@@ -244,6 +248,7 @@ class NumeroALetras
      * The connector string is converted to uppercase using UTF-8 encoding.
      *
      * @param array $splitNumber The array of strings to concatenate.
+     *
      * @return string The concatenated string.
      */
     private function concat(array $splitNumber): string
@@ -258,10 +263,10 @@ class NumeroALetras
      * millions, thousands, and hundreds, and converts each group into words.
      *
      * @param int $number The number to be converted. Must be between 0 and 999,999,999.
-     * 
-     * @return string The number converted into Spanish words.
-     * 
+     *
      * @throws ParseError If the number is less than 0 or greater than 999,999,999.
+     *
+     * @return string The number converted into Spanish words.
      */
     private function convertNumber(int $number): string
     {
@@ -310,10 +315,9 @@ class NumeroALetras
      * Spanish words representation. It handles the hundreds, tens, and units of the group.
      *
      * @param string $n The group of numbers to be converted.
-     * 
+     *
      * @return string The group of numbers converted into Spanish words.
      */
-
     private function convertGroup(string $group): string
     {
         $output = '';
