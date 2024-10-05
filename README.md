@@ -12,7 +12,7 @@ Librería PHP para convertir un número a letras, palabras o texto.
 
 ## Introducción
 
-`numero-a-letras` es una librería PHP que permite convertir números a su representación en palabras. Es útil para generar textos como "mil doscientos treinta y cuatro" a partir del número 1234.
+`php-numero-a-letras` es una librería PHP que permite convertir números a su representación en palabras. Es útil para generar textos como "mil doscientos treinta y cuatro" a partir del número 1234.
 
 ## Instalación
 
