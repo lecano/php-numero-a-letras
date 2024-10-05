@@ -17,7 +17,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    name: PHP ${{ matrix.php }}
+    name: PHP ${{ matrix.php-versions }}
     
     steps:
     - uses: actions/checkout@v2
