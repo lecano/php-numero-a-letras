@@ -272,7 +272,7 @@ class NumeroALetras
     {
         $converted = '';
 
-        if (($number < 0) || !is_numeric($number)) {
+        if ($number < 0 || !is_numeric($number) || $number > 999999999) {
             throw new ParseError('Invalid number');
         }
 
