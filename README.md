@@ -21,7 +21,7 @@ Actualmente soporta números desde 0 hasta 999,999,999,999,999.
 ### PHP ^8.2:
 
 ```bash
-composer require luecano/numero-a-letras "^4.0"
+composer require luecano/numero-a-letras
 ```
 
 PHP 7.2 a 8.1:
