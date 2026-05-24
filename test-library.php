@@ -9,9 +9,9 @@ use Luecano\NumeroALetras\NumeroALetras;
 $number = $argv[1] ?? '';
 
 if ($number === '') {
-	echo 'Usage: php test-library.php <number> [decimals] [currency] [cents]' . PHP_EOL;
-	echo 'Example: php test-library.php 1234567890123.45 2 SOLES CENTIMOS' . PHP_EOL;
-	exit(1);
+    echo 'Usage: php test-library.php <number> [decimals] [currency] [cents]' . PHP_EOL;
+    echo 'Example: php test-library.php 1234567890123.45 2 SOLES CENTIMOS' . PHP_EOL;
+    exit(1);
 }
 
 $numberValue = (float) $number;

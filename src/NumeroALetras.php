@@ -335,7 +335,7 @@ class NumeroALetras
     /**
      * Converts a 6-digit group into Spanish words (thousands + hundreds).
      *
-     * @param string $group A 6-digit numeric string.
+     * @param string $group              A 6-digit numeric string.
      * @param bool   $forceApocopeForOne If true, terminal "UNO" is forced to "UN".
      *
      * @return string
