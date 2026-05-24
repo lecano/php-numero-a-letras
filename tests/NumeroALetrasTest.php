@@ -3,11 +3,12 @@
 namespace Luecano\NumeroALetras\Tests;
 
 use Luecano\NumeroALetras\NumeroALetras;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class NumeroALetrasTest extends TestCase
 {
-    public static function MethodToWordsProvider()
+    public static function MethodToWordsProvider(): array
     {
         return [
             [100, 'CIEN'],
@@ -17,12 +18,7 @@ class NumeroALetrasTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider MethodToWordsProvider
-     *
-     * @param int    $number
-     * @param string $expected
-     */
+    #[DataProvider('MethodToWordsProvider')]
     public function testToWords(int $number, string $expected): void
     {
         $formatter = new NumeroALetras();
@@ -34,6 +30,28 @@ class NumeroALetrasTest extends TestCase
     {
         $formatter = new NumeroALetras();
         $this->assertEquals('MIL CIEN', $formatter->toWords(1100));
+    }
+
+    public function testToWordsMilMillones(): void
+    {
+        $formatter = new NumeroALetras();
+        $this->assertEquals('MIL MILLONES', $formatter->toWords(1000000000));
+    }
+
+    public function testToWordsBillones(): void
+    {
+        $formatter = new NumeroALetras();
+        $this->assertEquals('UN BILLÓN', $formatter->toWords(1000000000000));
+        $this->assertEquals('DOS BILLONES', $formatter->toWords(2000000000000));
+    }
+
+    public function testToWordsBillonesConMillones(): void
+    {
+        $formatter = new NumeroALetras();
+        $this->assertEquals(
+            'UN BILLÓN DOSCIENTOS TREINTA Y CUATRO MIL QUINIENTOS SESENTA Y SIETE MILLONES OCHOCIENTOS NOVENTA MIL CIENTO VEINTITRÉS',
+            $formatter->toWords(1234567890123)
+        );
     }
 
     public function testToMoney(): void

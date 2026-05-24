@@ -14,6 +14,8 @@ Librería PHP para convertir un número a letras, palabras o texto.
 
 `php-numero-a-letras` es una librería PHP que permite convertir números a su representación en palabras. Es útil para generar textos como "mil doscientos treinta y cuatro" a partir del número 1234.
 
+Actualmente soporta números desde 0 hasta 999,999,999,999,999.
+
 ## Instalación
 
 ### PHP ^8.2:
@@ -42,6 +44,20 @@ Agregar referencia a librería.
 
 require 'vendor/autoload.php'; // Línea no necesaria si se usa frameworks como Laravel
 use Luecano\NumeroALetras\NumeroALetras;
+```
+
+### Rango soportado
+
+- Mínimo: `0`
+- Máximo: `999999999999999`
+
+Ejemplo para números grandes:
+
+```php
+$formatter = new NumeroALetras();
+echo $formatter->toWords(1234567890123);
+
+//UN BILLÓN DOSCIENTOS TREINTA Y CUATRO MIL QUINIENTOS SESENTA Y SIETE MILLONES OCHOCIENTOS NOVENTA MIL CIENTO VEINTITRÉS
 ```
 
 ### Convertir un número a letras o palabras
@@ -124,6 +140,24 @@ $formatter = new NumeroALetras();
 $formatter->conector = 'Y';
 ```
 
+### Script rápido para probar la librería
+
+El proyecto incluye el archivo `test-library.php` para hacer pruebas rápidas desde línea de comandos.
+
+Uso:
+
+```bash
+php test-library.php <number> [decimals] [currency] [cents]
+```
+
+Ejemplos:
+
+```bash
+php test-library.php 1234567890123.45
+php test-library.php 1234567890123.45 2 SOLES CENTIMOS
+php test-library.php 1234567890123.45 2 PESOS CENTIMOS
+```
+
 ## Ejemplos de uso
 
 ```php
@@ -168,6 +202,13 @@ $formatter = new NumeroALetras();
 echo $formatter->toInvoice(1700.50, 2, 'soles');
 
 //MIL SETECIENTOS CON 50/100 SOLES
+```
+
+```php
+$formatter = new NumeroALetras();
+echo $formatter->toWords(1234567890123);
+
+//UN BILLÓN DOSCIENTOS TREINTA Y CUATRO MIL QUINIENTOS SESENTA Y SIETE MILLONES OCHOCIENTOS NOVENTA MIL CIENTO VEINTITRÉS
 ```
 
 ```php

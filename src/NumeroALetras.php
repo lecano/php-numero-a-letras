@@ -16,7 +16,7 @@ class NumeroALetras
      * - $unidades[1] returns 'UNO '
      * - $unidades[10] returns 'DIEZ '
      */
-    private $unidades = [
+    private array $unidades = [
         '',
         'UNO ',
         'DOS ',
@@ -47,7 +47,7 @@ class NumeroALetras
      * for tens. The values represent the words for twenty, thirty, forty, fifty,
      * sixty, seventy, eighty, ninety, and one hundred.
      */
-    private $decenas = [
+    private array $decenas = [
         'VEINTI',
         'TREINTA ',
         'CUARENTA ',
@@ -64,7 +64,7 @@ class NumeroALetras
      *
      * @var string[]
      */
-    private $centenas = [
+    private array $centenas = [
         'CIENTO ',
         'DOSCIENTOS ',
         'TRESCIENTOS ',
@@ -85,7 +85,7 @@ class NumeroALetras
      *
      * @var array
      */
-    private $acentosExcepciones = [
+    private array $acentosExcepciones = [
         'VEINTIDOS'  => 'VEINTIDÓS ',
         'VEINTITRES' => 'VEINTITRÉS ',
         'VEINTISEIS' => 'VEINTISÉIS ',
@@ -94,7 +94,7 @@ class NumeroALetras
     /**
      * @var string The connector string used in the NumeroALetras class.
      */
-    public $conector = 'CON';
+    public string $conector = 'CON';
 
     /**
      * @var bool
@@ -103,7 +103,7 @@ class NumeroALetras
      * When set to true, the apocope form will be applied.
      * Default value is false.
      */
-    public $apocope = false;
+    public bool $apocope = false;
 
     /**
      * Converts a numeric value to its word representation.
@@ -231,7 +231,7 @@ class NumeroALetras
      */
     private function wholeNumber(string $number): string
     {
-        if ($number == '0') {
+        if ($number === '0') {
             $number = 'CERO ';
         } else {
             $number = $this->convertNumber($number);
@@ -259,53 +259,114 @@ class NumeroALetras
     /**
      * Converts a numeric value into its corresponding Spanish words representation.
      *
-     * This function handles numbers from 0 to 999,999,999. It divides the number into
-     * millions, thousands, and hundreds, and converts each group into words.
+     * This function handles numbers from 0 to 999,999,999,999,999. It divides the number
+     * into billones, miles de millones, millones, miles, and hundreds, converting each
+     * group into words.
      *
-     * @param int $number The number to be converted. Must be between 0 and 999,999,999.
+     * @param int|string $number The number to be converted. Must be between 0 and
+     *                           999,999,999,999,999.
      *
-     * @throws ParseError If the number is less than 0 or greater than 999,999,999.
+     * @throws ParseError If the number is invalid or out of supported range.
      *
      * @return string The number converted into Spanish words.
      */
-    private function convertNumber(int $number): string
+    private function convertNumber(int|string $number): string
     {
         $converted = '';
 
-        if ($number < 0 || !is_numeric($number) || $number > 999999999) {
+        $numberString = (string) $number;
+
+        if (str_starts_with($numberString, '-')) {
             throw new ParseError('Invalid number');
         }
 
-        $numberStrFill = str_pad($number, 9, '0', STR_PAD_LEFT);
-        $millones = substr($numberStrFill, 0, 3);
-        $miles = substr($numberStrFill, 3, 3);
-        $cientos = substr($numberStrFill, 6);
+        if (!ctype_digit($numberString)) {
+            throw new ParseError('Invalid number');
+        }
 
-        if (intval($millones) > 0) {
-            if ($millones == '001') {
-                $converted .= 'UN MILLÓN ';
-            } elseif (intval($millones) > 0) {
-                $converted .= sprintf('%sMILLONES ', $this->convertGroup($millones));
+        $numberString = ltrim($numberString, '0');
+        $numberString = $numberString === '' ? '0' : $numberString;
+
+        if (strlen($numberString) > 15) {
+            throw new ParseError('Invalid number');
+        }
+
+        $numberStrFill = str_pad($numberString, 15, '0', STR_PAD_LEFT);
+        $billones = substr($numberStrFill, 0, 3);
+        $millones = substr($numberStrFill, 3, 6);
+        $miles = substr($numberStrFill, 9, 3);
+        $cientos = substr($numberStrFill, 12, 3);
+
+        if ((int) $billones > 0) {
+            if ($billones === '001') {
+                $converted .= 'UN BILLÓN ';
+            } else {
+                $converted .= sprintf('%sBILLONES ', $this->convertGroup($billones));
             }
         }
 
-        if (intval($miles) > 0) {
-            if ($miles == '001') {
+        if ((int) $millones > 0) {
+            if ($millones === '000001') {
+                $converted .= 'UN MILLÓN ';
+            } else {
+                $converted .= sprintf('%s MILLONES ', $this->convertSixDigitGroup($millones, true));
+            }
+        }
+
+        if ((int) $miles > 0) {
+            if ($miles === '001') {
                 $converted .= 'MIL ';
-            } elseif (intval($miles) > 0) {
+            } else {
                 $converted .= sprintf('%sMIL ', $this->convertGroup($miles));
             }
         }
 
-        if (intval($cientos) > 0) {
-            if ($cientos == '001') {
+        if ((int) $cientos > 0) {
+            if ($cientos === '001') {
                 $this->apocope === true ? $converted .= 'UN ' : $converted .= 'UNO ';
-            } elseif (intval($cientos) > 0) {
+            } else {
                 $converted .= sprintf('%s ', $this->convertGroup($cientos));
             }
         }
 
         return trim($converted);
+    }
+
+    /**
+     * Converts a 6-digit group into Spanish words (thousands + hundreds).
+     *
+     * @param string $group A 6-digit numeric string.
+     * @param bool   $forceApocopeForOne If true, terminal "UNO" is forced to "UN".
+     *
+     * @return string
+     */
+    private function convertSixDigitGroup(string $group, bool $forceApocopeForOne = false): string
+    {
+        $output = '';
+        $thousands = substr($group, 0, 3);
+        $hundreds = substr($group, 3, 3);
+
+        if ((int) $thousands > 0) {
+            if ($thousands === '001') {
+                $output .= 'MIL ';
+            } else {
+                $output .= sprintf('%sMIL ', $this->convertGroup($thousands));
+            }
+        }
+
+        if ((int) $hundreds > 0) {
+            if ($hundreds === '001') {
+                if ($forceApocopeForOne || $this->apocope === true) {
+                    $output .= 'UN ';
+                } else {
+                    $output .= 'UNO ';
+                }
+            } else {
+                $output .= sprintf('%s ', $this->convertGroup($hundreds));
+            }
+        }
+
+        return trim($output);
     }
 
     /**
@@ -322,21 +383,21 @@ class NumeroALetras
     {
         $output = '';
 
-        if ($group == '100') {
+        if ($group === '100') {
             $output = 'CIEN ';
         } elseif ($group[0] !== '0') {
             $output = $this->centenas[$group[0] - 1];
         }
 
-        $k = intval(substr($group, 1));
+        $k = (int) substr($group, 1);
 
         if ($k <= 20) {
             $unidades = $this->unidades[$k];
         } else {
             if (($k > 30) && ($group[2] !== '0')) {
-                $unidades = sprintf('%sY %s', $this->decenas[intval($group[1]) - 2], $this->unidades[intval($group[2])]);
+                $unidades = sprintf('%sY %s', $this->decenas[(int) $group[1] - 2], $this->unidades[(int) $group[2]]);
             } else {
-                $unidades = sprintf('%s%s', $this->decenas[intval($group[1]) - 2], $this->unidades[intval($group[2])]);
+                $unidades = sprintf('%s%s', $this->decenas[(int) $group[1] - 2], $this->unidades[(int) $group[2]]);
             }
         }
 
